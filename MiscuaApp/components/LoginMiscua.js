@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+
 
 import {
     Text,
@@ -15,8 +14,11 @@ import {
     ScrollView
 } from 'react-native';
 
+
 export function LoginMiscua({ navigation }){
-        return (
+    const [phoneNumber, setPhoneNumber] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    return (
             <SafeAreaView style={styles.safe}>
             <View style={styles.generalContainer}>
             <ScrollView>
@@ -43,6 +45,10 @@ export function LoginMiscua({ navigation }){
                                     placeholderTextColor= 'rgb(162, 162, 162)'
                                     returnKeyType={'next'}
                                     keyboardType={'phone-pad'}
+                                    maxLength={10}
+                                    value={phoneNumber}
+                                    onChangeText={setPhoneNumber}
+                                    keyboardType={'numeric'}
                                 />
                             </View>
                         </View>
@@ -56,19 +62,22 @@ export function LoginMiscua({ navigation }){
                             <View style={styles.right}>
                                 <TextInput
                                     style={styles.inputText}
-                                    placeholder='Contraseña' 
+                                    placeholder='Contraseña'
                                     placeholderTextColor= 'rgb(162, 162, 162)'
                                     secureTextEntry= {true}
+                                    value={password}
+                                    onChangeText={setPassword}
+                                    secureTextEntry
                                 />
                             </View> 
                         </View>
-                        <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('howto')}>
+                        <TouchableOpacity style={styles.loginBtn} onPress={() => console.log('hello!',{phoneNumber}, {password})}>
                             <Text style={styles.loginText}>INGRESA</Text>
                         </TouchableOpacity>
                         <TouchableOpacity>
                             <Text style={styles.forgot}>Olvidé mi contraseña</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.registerText}>
+                        <TouchableOpacity style={styles.registerText} onPress={() => navigation.navigate('register')}>
                             <Text><Text style={styles.registerTextWithout}>No tengo cuenta,  </Text><Text style={styles.registerLink}>REGISTRARME</Text></Text>
                         </TouchableOpacity>
                     </View>
