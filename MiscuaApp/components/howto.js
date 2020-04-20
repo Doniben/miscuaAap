@@ -13,7 +13,6 @@ import {
 export function howto({ navigation }) {  
         return (
             <SafeAreaView style={styles.safe}>
-
                 <View style={styles.howToContainer}>
                     <View style={styles.headerContainer}>
                         <View>
@@ -38,13 +37,13 @@ export function howto({ navigation }) {
                             source={require('../assets/img/yt_player.png')}
                         />
                     </View>
-                    <View style={{ flexDirection: 'row', marginBottom: 35 }}>
-                        <TouchableOpacity style={styles.button}>
+                    <View style={styles.optionButtons}>
+                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('atentionLines')}>
                             <Text style={styles.textButton}>
                                 IMFORMACIÓN
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('main')}>
                             <Text style={styles.textButton}>
                                 SALTAR
                             </Text>
@@ -58,24 +57,30 @@ const styles = StyleSheet.create({
     safe: {
         backgroundColor: 'rgb(45, 45, 68)',
     },
+    howToContainer: {
+        backgroundColor: 'rgb(45, 45, 68)',
+        width:'100%',
+        height:'100%',
+    },
     headerContainer: {
         backgroundColor: 'rgb(45, 45, 68)',
-        justifyContent: 'center', 
         alignItems: 'center', 
-        width: '100%', 
-        height: 230,
         marginTop: 20,
     },
     logo: {
         width: 260, 
-        height: 140, 
-        marginTop: 0,
+        height: 160, 
+        marginTop: Platform.select({
+            ios: 50,
+            android: 30
+        }),
         padding: 10,
         paddingBottom: 0,
         resizeMode: 'contain'
     },
     tittle: {
         marginTop: 10,
+        marginBottom: 20
     },
 
     sectionTitle: {
@@ -93,30 +98,27 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         textAlign: 'center',
     },
-    howToContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        width: '80%',
-        marginTop: Platform.select({
-            ios: 80,
-            android: 15
-        }),
-        alignSelf: 'center'
-    },
+
     textVideo: {
         fontSize: 16,
         color: 'rgb(162, 162, 162)',
-        textAlign: 'center'
+        textAlign: 'center',
+        justifyContent: 'center',
     },
     imageVideo: {
         resizeMode: "contain",
-        width: 300,
+        width: '80%',
         alignSelf: 'center',
-        height: Platform.select({
-            ios:300,
-            android:220
-        })
+        justifyContent: 'center',
     },
+
+    optionButtons: {
+        flex: 1,
+        flexDirection: 'row', 
+        alignItems: 'flex-end',
+        justifyContent: 'center'
+    },
+
     button: {
         flex: 1,
         justifyContent: "center",
