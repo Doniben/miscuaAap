@@ -3,10 +3,10 @@ import * as React from 'react';
 import { Button } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import { Login } from './components/Login';
-import { Activities } from './components/Profile';
+import { atentionLines } from './components/atentionLines';
 import { LoginMiscua } from './components/LoginMiscua';
 import { howto } from './components/howto';
+import { main } from './components/main'
 
 const Stack = createStackNavigator();
 
@@ -16,7 +16,7 @@ export default function MyStack() {
       <Stack.Navigator>
         <Stack.Screen 
           name="LoginMiscua"
-          component={LoginMiscua} 
+          component={ LoginMiscua } 
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -25,13 +25,13 @@ export default function MyStack() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Home"
-          component={Login}
+          name="main"
+          component={ main }
           options={{ headerShown: false }}
         />
         <Stack.Screen 
-          name="Profile" 
-          component={Activities} 
+          name="atentionLines" 
+          component={ atentionLines } 
           options={{ headerShown: false }}
         /> 
       </Stack.Navigator>
