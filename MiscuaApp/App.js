@@ -6,7 +6,11 @@ import {createStackNavigator} from '@react-navigation/stack';
 import { atentionLines } from './components/atentionLines';
 import { LoginMiscua } from './components/LoginMiscua';
 import { howto } from './components/howto';
-import { main } from './components/main'
+import { main } from './components/main';
+import { creators } from './components/creators';
+import { confirmationScreen } from './components/confirmationScreen';
+import { positiveConfirmation } from './components/positiveConfirmation'
+
 
 const Stack = createStackNavigator();
 
@@ -30,8 +34,23 @@ export default function MyStack() {
           options={{ headerShown: false }}
         />
         <Stack.Screen 
+          name="positiveConfirmation" 
+          component={ positiveConfirmation } 
+          options={{ headerShown: false }}
+        /> 
+        <Stack.Screen 
+          name="creators" 
+          component={ creators } 
+          options={{ headerShown: false }}
+        /> 
+        <Stack.Screen 
           name="atentionLines" 
           component={ atentionLines } 
+          options={{ headerShown: false }}
+        /> 
+        <Stack.Screen 
+          name="confirmationScreen" 
+          component={ confirmationScreen } 
           options={{ headerShown: false }}
         /> 
       </Stack.Navigator>
