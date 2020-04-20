@@ -9,48 +9,50 @@ import {
     Platform,
     SafeAreaView
 } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export function howto({ navigation }) {  
         return (
-            <SafeAreaView style={styles.safe}>
+            
                 <View style={styles.howToContainer}>
-                    <View style={styles.headerContainer}>
+            <SafeAreaView style={styles.safe}>
+                        <View style={styles.headerContainer}>
+                            <View>
+                                <Image
+                                    style={styles.logo}
+                                    source={require('../assets/img/01.png')}/>
+                            </View>
+                            <View style={styles.tittle}>
+                                <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
+                            </View>
+                        </View>
+                        <View>
+                            <Text style={styles.textVideo}>
+                                En el siguiente video te informaremos cómo
+                                usar la aplicación y cómo entre todos podemos
+                                contribuir y sobresalir de la amenaza del COVID-19
+                            </Text>
+                        </View>
                         <View>
                             <Image
-                                style={styles.logo}
-                                source={require('../assets/img/01.png')}/>
+                                style={styles.imageVideo}
+                                source={require('../assets/img/yt_player.png')}
+                            />
                         </View>
-                        <View style={styles.tittle}>
-                            <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
+                        <View style={styles.optionButtons}>
+                            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('atentionLines')}>
+                                <Text style={styles.textButton}>
+                                    IMFORMACIÓN
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('main')}>
+                                <Text style={styles.textButton}>
+                                    SALTAR
+                                </Text>
+                            </TouchableOpacity>
                         </View>
+                        </SafeAreaView>
                     </View>
-                    <View>
-                        <Text style={styles.textVideo}>
-                            En el siguiente video te informaremos cómo
-                            usar la aplicación y cómo entre todos podemos
-                            contribuir y sobresalir de la amenaza del COVID-19
-                        </Text>
-                    </View>
-                    <View>
-                        <Image
-                            style={styles.imageVideo}
-                            source={require('../assets/img/yt_player.png')}
-                        />
-                    </View>
-                    <View style={styles.optionButtons}>
-                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('atentionLines')}>
-                            <Text style={styles.textButton}>
-                                IMFORMACIÓN
-                            </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('main')}>
-                            <Text style={styles.textButton}>
-                                SALTAR
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </SafeAreaView>
         )};
 
 const styles = StyleSheet.create({
@@ -70,16 +72,12 @@ const styles = StyleSheet.create({
     logo: {
         width: 260, 
         height: 160, 
-        marginTop: Platform.select({
-            ios: 50,
-            android: 30
-        }),
         padding: 10,
         paddingBottom: 0,
         resizeMode: 'contain'
     },
     tittle: {
-        marginTop: 10,
+        marginTop: 5,
         marginBottom: 20
     },
 
@@ -87,33 +85,30 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '500',
         color: 'white',
-        paddingTop: 10,
         textAlign: 'center',
     },
-
     sectionBoldTitle: {
         fontSize: 18,
         fontWeight: 'bold',
         color: 'white',
-        paddingTop: 10,
         textAlign: 'center',
     },
 
     textVideo: {
         fontSize: 16,
         color: 'rgb(162, 162, 162)',
-        textAlign: 'center',
-        justifyContent: 'center',
+        marginBottom:0,
+        textAlign: 'center',   
     },
     imageVideo: {
+        marginTop:-80,
         resizeMode: "contain",
         width: '80%',
         alignSelf: 'center',
-        justifyContent: 'center',
+        
     },
 
-    optionButtons: {
-        flex: 1,
+    optionButtons: {        
         flexDirection: 'row', 
         alignItems: 'flex-end',
         justifyContent: 'center'
@@ -129,7 +124,15 @@ const styles = StyleSheet.create({
         height: 35,
         marginBottom: 35,
         margin: 10,
-        shadowOpacity: 0.4
+        shadowOpacity: 0.4,
+        marginTop:Platform.select({
+            ios: 0,
+            android: -50
+        }),
+        marginBottom:Platform.select({
+            ios: 20,
+            android: 100
+        }),
     },
     textButton: {
         fontSize: 16,
