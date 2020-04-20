@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { CheckBox } from 'react-native-elements';
 
 import {
@@ -12,7 +12,9 @@ import {
     SafeAreaView,
     Alert,
     TouchableWithoutFeedback,
-    Keyboard
+    Keyboard,
+    Linking,
+    Button,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -22,6 +24,12 @@ export function register({ navigation }){
     const [enteredPassword, setEnteredPassword] = useState('');
     const [checked, setChecked] = useState(false);
     
+    const url = "https://miscua.com/terminos-y-condiciones.html";
+
+    const terms = useCallback(async () => {
+            await Linking.openURL(url);
+        }, [url]);
+      
     const numberInputHandler = inputText => {
         setEnteredPhone(inputText.replace(/[^0-9]/g, ''));
     };
@@ -154,7 +162,7 @@ export function register({ navigation }){
                                 checked={checked}
                                 onPress={(changeCheck)}
                                 />
-                                <Text style={styles.forgot}>Acepto términos y condiciones</Text>
+                                <Text style={styles.forgot}>Acepto <Text style={styles.link} onPress={terms} >términos y condiciones</Text></Text>
                             </TouchableOpacity>
                             <View style={styles.registerText}>
                                 <Text style={styles.registerTextWithout}>Entre todos saldremos de esta situación</Text>
@@ -273,6 +281,10 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         paddingBottom: 0,
         resizeMode: 'contain'
-    }
+    },
+    link:{
+        textDecorationLine:'underline',
+    },
+
   },
 );
