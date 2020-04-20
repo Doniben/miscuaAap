@@ -13,46 +13,46 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 export function howto({ navigation }) {  
         return (
-            
-                <View style={styles.howToContainer}>
-            <SafeAreaView style={styles.safe}>
-                        <View style={styles.headerContainer}>
-                            <View>
-                                <Image
-                                    style={styles.logo}
-                                    source={require('../assets/img/01.png')}/>
-                            </View>
-                            <View style={styles.tittle}>
-                                <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
-                            </View>
-                        </View>
+            <View style={styles.howToContainer}>
+                <SafeAreaView style={styles.safe}>
+                    <View style={styles.headerContainer}>
                         <View>
-                            <Text style={styles.textVideo}>
+                            <Image
+                                style={styles.logo}
+                                source={require('../assets/img/01.png')}
+                            />
+                        </View>
+                        <View style={styles.tittle}>
+                            <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
+                        </View>
+                    </View>
+                    <View>
+                        <Text style={styles.textVideo}>
                                 En el siguiente video te informaremos cómo
                                 usar la aplicación y cómo entre todos podemos
                                 contribuir y sobresalir de la amenaza del COVID-19
-                            </Text>
-                        </View>
-                        <View>
-                            <Image
-                                style={styles.imageVideo}
-                                source={require('../assets/img/yt_player.png')}
-                            />
-                        </View>
-                        <View style={styles.optionButtons}>
-                            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('atentionLines')}>
-                                <Text style={styles.textButton}>
-                                    IMFORMACIÓN
-                                </Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('main')}>
-                                <Text style={styles.textButton}>
-                                    SALTAR
-                                </Text>
-                            </TouchableOpacity>
-                        </View>
-                        </SafeAreaView>
+                        </Text>
                     </View>
+                    <View>
+                        <Image
+                            style={styles.imageVideo}
+                            source={require('../assets/img/yt_player.png')}
+                        />
+                    </View>
+                    <View style={styles.optionButtons}>
+                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('atentionLines')}>
+                            <Text style={styles.textButton}>
+                                IMFORMACIÓN
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('main')}>
+                            <Text style={styles.textButton}>
+                                SALTAR
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </SafeAreaView>
+            </View>
         )};
 
 const styles = StyleSheet.create({
