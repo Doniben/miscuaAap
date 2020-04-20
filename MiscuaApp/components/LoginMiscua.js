@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 
 import {
@@ -11,14 +11,53 @@ import {
     TouchableOpacity,
     Platform,
     SafeAreaView,
-    ScrollView
+    ScrollView,
+    Keyboard,
+    TouchableWithoutFeedback,
+    Alert,
+    Button,
 } from 'react-native';
 
-
 export function LoginMiscua({ navigation }){
-    const [phoneNumber, setPhoneNumber] = React.useState('');
-    const [password, setPassword] = React.useState('');
+   
+    const [enteredPhone, setEnteredPhone] = useState('');
+    const [enteredPassword, setEnteredPassword] = useState('');
+
+    //function that just allow numbers in the Numberphone input
+    const numberInputHandler = inputText => {
+        setEnteredPhone(inputText.replace(/[^0-9]/g, ''));
+    };
+    //Function for validate the input
+    const confirmInputHandler = () => {
+        const confirmedPhone = enteredPhone;
+        if (confirmedPhone === '' || confirmedPhone.length < 10 || confirmedPhone[0] !== '3'){
+            Alert.alert('Ups','Ingresa un número válido')
+            }
+        else{
+           const confirmedPhone = parseInt(enteredPhone);
+            if (confirmedPhone < 0 || confirmedPhone === NaN){
+                Alert.alert('Ups!','Número inválido')
+                }
+            const confirmedPassword = enteredPassword;
+            if (confirmedPassword.length === 0 || confirmedPassword.length < 4){
+                Alert.alert('Ups!','Revisa tu contraseña')}
+                else{
+                    const user = {
+                        phone: '',
+                        password: ''
+                        }
+                    user['password'] = confirmedPassword;
+                    user['phone'] = confirmedPhone;
+                    console.log('Número correcto', user)
+                    setEnteredPhone('');
+                    setEnteredPassword('');
+                    Alert.alert('Por favor espera','Estamos Validando tus datos...')}
+                }
+        }         
     return (
+        <TouchableWithoutFeedback onPress={()=>{
+            Keyboard.dismiss();
+        }}>
             <SafeAreaView style={styles.safe}>
             <View style={styles.generalContainer}>
             <ScrollView>
@@ -43,12 +82,13 @@ export function LoginMiscua({ navigation }){
                                     style={styles.inputText}
                                     placeholder='Teléfono'
                                     placeholderTextColor= 'rgb(162, 162, 162)'
-                                    returnKeyType={'next'}
-                                    keyboardType={'phone-pad'}
                                     maxLength={10}
-                                    value={phoneNumber}
-                                    onChangeText={setPhoneNumber}
-                                    keyboardType={'numeric'}
+                                    keyboardType={'number-pad'}
+                                    autoCapitalize="none"
+                                    blurOnSubmit
+                                    onChangeText={numberInputHandler}
+                                    value={enteredPhone}
+                                    
                                 />
                             </View>
                         </View>
@@ -65,14 +105,14 @@ export function LoginMiscua({ navigation }){
                                     placeholder='Contraseña'
                                     placeholderTextColor= 'rgb(162, 162, 162)'
                                     secureTextEntry= {true}
-                                    value={password}
-                                    onChangeText={setPassword}
-                                    secureTextEntry
+                                    onChangeText={setEnteredPassword}
+                                    value={enteredPassword}
                                 />
                             </View> 
                         </View>
-                        <TouchableOpacity style={styles.loginBtn} onPress={() => console.log('hello!',{phoneNumber}, {password})}>
-                            <Text style={styles.loginText}>INGRESA</Text>
+                        <TouchableOpacity  style={styles.loginBtn} onPress={(confirmInputHandler)}>
+                            <Text style={styles.loginText} >
+                                INGRESA</Text>
                         </TouchableOpacity>
                         <TouchableOpacity>
                             <Text style={styles.forgot}>Olvidé mi contraseña</Text>
@@ -85,6 +125,7 @@ export function LoginMiscua({ navigation }){
             </View>
             
         </SafeAreaView> 
+        </TouchableWithoutFeedback>
         )};
 
 
