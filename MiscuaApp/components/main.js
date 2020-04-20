@@ -17,7 +17,7 @@ export function main({ navigation }){
         <SafeAreaView style={styles.safeContainer}>                
             <View style={styles.mainContainer}>
                 <View style={styles.header}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
                             <Image style={styles.leftNavigation}
                                 source={require('../assets/img/back-50.png')}
                             />  
@@ -52,7 +52,7 @@ export function main({ navigation }){
                                 RIESGO DE CONTAGIO
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.secondButtons} onPress={() => navigation.navigate('confirmationScreen')}>
+                        <TouchableOpacity style={styles.secondButtons} onPress={() => navigation.navigate('positiveConfirmation')}>
                             <Image 
                                 style={styles.riesgo}
                                 source={require('../assets/img/virusPositivo.png')}/>

@@ -15,12 +15,12 @@ export function confirmationScreen ({ navigation }) {
             <SafeAreaView style={styles.safeArea}>
                 <View style={styles.Container}>
                     <View style={styles.header}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
                             <Image style={styles.leftNavigation}
                                 source={require('../assets/img/back-50.png')}
                             />  
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
                             <Image style={styles.rightInfo}
                                 source={require('../assets/img/info.png')}
                             />  
@@ -53,7 +53,7 @@ export function confirmationScreen ({ navigation }) {
                         
                     </View>
                     <View style={styles.footerView}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('creators')}>
                             <Image
                             style={styles.creatorsButton}
                             source={require('../assets/img/logo.png')}
@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
     },
     Container: {
         backgroundColor: 'rgb(45, 45, 68)',
-        paddingBottom: 30
+        width:'100%',
+        height:'100%',
     },
     header: {
         flexDirection: 'row',

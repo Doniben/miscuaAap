@@ -7,6 +7,7 @@ import {
     View,
     TouchableOpacity,
     Image,
+    ScrollView,
     StyleSheet,
     Platform,
     SafeAreaView
@@ -14,92 +15,94 @@ import {
 
 export function creators({ navigation }){
     return (
-        <View style={styles.howToContainer}>
-            <View style={styles.header}>
-                <TouchableOpacity>
-                    <Image style={styles.leftNavigation}
-                        source={require('../assets/img/back-50.png')}
-                    />  
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Image style={styles.rightInfo}
-                        source={require('../assets/img/info.png')}
-                    />  
-                </TouchableOpacity>
-            </View>
-            <View>
-                <View style={styles.headerContainer}>
-                    <Image
-                        style={styles.logo}
-                        source={require('../assets/img/01.png')}/>
-                </View>
-            </View>
-            <View>
-                <Text style={styles.textVideo}>
-                        Ésta app nace del sentimiento de solidaridad, empatía y trabajo en 
-                    equipo de nosotros los colombianos. Quisimos aportar con nuestros 
-                    conocimientos y soluciones tecnológicas y así mitigar el impacto del 
-                    COVID-19 en nuestro país. Agradecemos a todos los que ayudaron e 
-                    hicieron parte de este noble proyecto.
-                </Text>
-            </View>
-            <View style={styles.tittle}>
-                <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
-            </View>
-            <View style={{ flexDirection: 'row', alignSelf:'center' }}>
-                <View>
-                    <Image
-                        style={styles.imageVideo}
-                        source={require('../assets/img/conicomlab.png')}
-                    />
-                    <Text style={styles.descripcion}>
-                        conicomlab.com
-                    </Text>
+        <ScrollView>
+            <View style={styles.howToContainer}>
+                <View style={styles.header}>
+                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                        <Image style={styles.leftNavigation}
+                            source={require('../assets/img/back-50.png')}
+                        />  
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Image style={styles.rightInfo}
+                            source={require('../assets/img/info.png')}
+                        />  
+                    </TouchableOpacity>
                 </View>
                 <View>
-                    <Image
-                        style={styles.imageVideo}
-                        source={require('../assets/img/thedataculture.png')}
-                    />
-                    <Text style={styles.descripcion}>
-                        thedataculture.com
-                    </Text>
-                </View>
-            </View>
-            <View style={{ flexDirection: 'row', alignSelf:'center', marginBottom:20 }}>
-                <View>
-                    <Image
-                        style={styles.imageVideo}
-                        source={require('../assets/img/pluriza.png')}
-                    />
-                    <Text style={styles.descripcion}>
-                        pluriza.com
-                    </Text>
+                    <View style={styles.headerContainer}>
+                        <Image
+                            style={styles.logo}
+                            source={require('../assets/img/01.png')}/>
+                    </View>
                 </View>
                 <View>
-                    <Image
-                        style={styles.imageVideo}
-                        source={require('../assets/img/dochjaFilmo.png')}
-                    />
-                    <Text style={styles.descripcion}>
-                        doniben.tech
+                    <Text style={styles.textVideo}>
+                            Ésta app nace del sentimiento de solidaridad, empatía y trabajo en 
+                        equipo de nosotros los colombianos. Quisimos aportar con nuestros 
+                        conocimientos y soluciones tecnológicas y así mitigar el impacto del 
+                        COVID-19 en nuestro país. Agradecemos a todos los que ayudaron e 
+                        hicieron parte de este noble proyecto.
+                    </Text>
+                </View>
+                <View style={styles.tittle}>
+                    <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
+                </View>
+                <View style={{ flexDirection: 'row', alignSelf:'center' }}>
+                    <View>
+                        <Image
+                            style={styles.imageVideo}
+                            source={require('../assets/img/conicomlab.png')}
+                        />
+                        <Text style={styles.descripcion}>
+                            conicomlab.com
+                        </Text>
+                    </View>
+                    <View>
+                        <Image
+                            style={styles.imageVideo}
+                            source={require('../assets/img/thedataculture.png')}
+                        />
+                        <Text style={styles.descripcion}>
+                            thedataculture.com
+                        </Text>
+                    </View>
+                </View>
+                <View style={{ flexDirection: 'row', alignSelf:'center', marginBottom:20 }}>
+                    <View>
+                        <Image
+                            style={styles.imageVideo}
+                            source={require('../assets/img/pluriza.png')}
+                        />
+                        <Text style={styles.descripcion}>
+                            pluriza.com
+                        </Text>
+                    </View>
+                    <View>
+                        <Image
+                            style={styles.imageVideo}
+                            source={require('../assets/img/dochjaFilmo.png')}
+                        />
+                        <Text style={styles.descripcion}>
+                            doniben.tech
+                        </Text>
+                    </View>
+                </View>
+                <View>
+                    <Text style={styles.sectionBoldTitle}>
+                            EQUIPO
+                    </Text>
+                </View>
+                <View style={styles.contributors}>
+                    <Text style={styles.textVideo}>
+                        * Jhon Sebastian Arevalo Ballesteros
+                        * Leito
+                        * Doniben Jimenez
+                        * David Arbeláez Guzman
                     </Text>
                 </View>
             </View>
-            <View>
-                <Text style={styles.sectionBoldTitle}>
-                        EQUIPO
-                </Text>
-            </View>
-            <View style={styles.contributors}>
-                <Text style={styles.textVideo}>
-                    * Jhon Sebastian Arevalo Ballesteros
-                    * Leito
-                    * Doniben Jimenez
-                    * David Arbeláez Guzman
-                </Text>
-            </View>
-        </View>
+        </ScrollView>
     )}
 
 const styles = StyleSheet.create({
@@ -107,8 +110,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         width: '100%',
+        height: '100%',
         marginTop: Platform.select({
-            ios: 40,
+            ios: 20,
             android: 15
         }),
         backgroundColor: 'white',
