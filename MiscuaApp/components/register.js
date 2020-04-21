@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { CheckBox } from 'react-native-elements';
+import axios from 'axios'
 
 import {
     Text,
@@ -60,7 +61,30 @@ export function register({ navigation }){
                         user['password'] = confirmedPassword;
                         user['phone'] = confirmedPhone;
                         user['age'] = confirmedAge;
+                        const HOST = 'https://covid19.ieliot.com/' 
+                        const TOKEN = 'eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJjbGkiOiI1ZTdiNDc5NmY1YmQ3NGM0MTYyZWRmMWUiLCJkZXYiOiI1ZTdiYzUwNzY1YjZkNjVhNTBmYjI3NmMiLCJleHAiOjE2NDg1NjYzMjAsIm5iZiI6MTU4NTQ5NDMyMCwicHJvIjoiY292aWQxOSIsInNjcCI6MH0.WjIzXecfpB6ZNWPaV6NAJJUHF0v3g1UigQKQSc4rSizh11_OiP8zszdxLNNIN5WeSzwId0pyJ8Z5aVDuyf-I3Q9BBHTkSh2Rx7T_ssa3OB1xUpvSYsrNMN3sI8peVIsJfedXgbfnGBlrJBCQR4sHPXuugWqkPe5P1do-LhMTeJ5iF11JCtMp1Dvc43fXc8bBoU9eX5Pdxwz-c2Vspg0EJN1Xcm8vIogmtMB8Ro--rZrIRhW3TAMOARJk-jcwINsx47QwVi2XRsVAmGWl0TRrTohuVl9xvqoxhO8PYOiss9L6LZ60tP22v8IOoINXoxYlMh_W9TRSj1HJYiLF7onPnBqDfd37wKG7FoO4UkTcXECV09uwIQFJuv_9URI1zrHWWJWmxq49rDvKaFkbKXkIfInAxnjI0WEHmJxpqcIT_x79ZV7rfR5_H2JM8B4um0HpnaBdgwWDt8Zn7o6WoWjrZCbXHs4abUvafkX-lsi8XXHSCmmdPAh7lx5h3QKF1rGWR5ScyfI-O8rOI_D1bu4H_QLE6ME88gjTr6XTpSnLofQaKZZu0TiAHkpEfl_SUXXlyfjSfutkuyr0sdwMbJaXzSlNQ45Uhy2mwF18l0MkHYEiOaz88-xZ3Qi3LnOozh9tGiPiXqfaMM8Pz4wGnlkgRFMYyjYnI-X9Zz_OB4wz65c'
+
                         console.log('Número correcto', user)
+                        var postData = {
+                            'password': user.password,
+                            "data": {
+                                "phone": user.phone,
+                                "age": user.age
+                            }
+                        };
+                        let axiosConfig = {
+                            headers: {
+                                'Authorization': `${TOKEN}`,
+                                'Content-Type': 'application/json'
+                                }
+                        };
+                        axios.post( `${HOST}` + 'rest/v1/device/', postData, axiosConfig)
+                          .then(function (response) {
+                            navigation.navigate('LoginMiscua');
+                          })
+                          .catch(function (error) {
+                            console.log(error);
+                          });
                         setEnteredPhone('');
                         setEnteredAge('');
                         setEnteredPassword('');
