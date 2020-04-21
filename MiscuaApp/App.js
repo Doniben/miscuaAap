@@ -24,6 +24,11 @@ export default function MyStack() {
           component={ register } 
           options={{ headerShown: false }}
         />
+        <Stack.Screen 
+          name="LoginMiscua"
+          component={ LoginMiscua } 
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="howto"
           component={ howto }
