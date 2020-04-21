@@ -14,8 +14,8 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
     Linking,
-    Button,
 } from 'react-native';
+
 import { ScrollView } from 'react-native-gesture-handler';
 
 export function register({ navigation }){
@@ -48,8 +48,8 @@ export function register({ navigation }){
                 Alert.alert('Ups', 'Revisa tu edad')
             }
             else{
-                if (confirmedPassword.length === 0 || confirmedPassword.length < 4){
-                    Alert.alert('Ups!','Revisa tu contraseña')}
+                if (confirmedPassword.length === 0 || confirmedPassword.length < 8){
+                    Alert.alert('Ups!','Tu contraseña debe contener almenos 8 caracteres')}
                     else{
                         if (checked === true){
                         const user = {
@@ -60,11 +60,12 @@ export function register({ navigation }){
                         user['password'] = confirmedPassword;
                         user['phone'] = confirmedPhone;
                         user['age'] = confirmedAge;
-                        console.log('Número correcto', user)
+                        console.log('Successful', user)
                         setEnteredPhone('');
                         setEnteredAge('');
                         setEnteredPassword('');
-                        Alert.alert('Por favor espera','Estamos Validando tus datos...')
+                        Alert.alert('Registro exitoso!','Ya puedes iniciar sesión')
+                        navigation.navigate('login')
                     }
                     else{
                         Alert.alert('Ups', 'Acepta los términos y condiciones')
@@ -149,6 +150,7 @@ export function register({ navigation }){
                                         secureTextEntry= {true}
                                         value={enteredPassword}
                                         onChangeText={setEnteredPassword}
+                                        maxLength={25}
                                     />
                                 </View> 
                             </View>

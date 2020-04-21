@@ -11,12 +11,12 @@ import {
     TouchableOpacity,
     Platform,
     SafeAreaView,
-    ScrollView,
     Keyboard,
     TouchableWithoutFeedback,
     Alert,
-    Button,
 } from 'react-native';
+
+import { ScrollView } from 'react-native-gesture-handler';
 
 export function LoginMiscua({ navigation }){
    
@@ -48,11 +48,14 @@ export function LoginMiscua({ navigation }){
                         }
                     user['password'] = confirmedPassword;
                     user['phone'] = confirmedPhone;
-                    console.log('Número correcto', user)
+                    console.log('Successful', user)
                     setEnteredPhone('');
                     setEnteredPassword('');
-                    Alert.alert('Por favor espera','Estamos Validando tus datos...')}
+                    Alert.alert('Ingreso correcto!')
+                    navigation.navigate('howto')
+                        
                 }
+            }
         }         
     return (
         <TouchableWithoutFeedback onPress={()=>{
@@ -103,6 +106,7 @@ export function LoginMiscua({ navigation }){
                                 <TextInput
                                     style={styles.inputText}
                                     placeholder='Contraseña'
+                                    maxLength={25}
                                     placeholderTextColor= 'rgb(162, 162, 162)'
                                     secureTextEntry= {true}
                                     onChangeText={setEnteredPassword}
@@ -114,7 +118,7 @@ export function LoginMiscua({ navigation }){
                             <Text style={styles.loginText} >
                                 INGRESA</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('passwordRequest')}>
                             <Text style={styles.forgot}>Olvidé mi contraseña</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.registerText} onPress={() => navigation.navigate('register')}>
@@ -226,6 +230,7 @@ const styles = StyleSheet.create({
         fontSize:14,
         borderBottomColor: 'rgb(162, 162, 162)',
         borderBottomWidth: 1,
+        paddingBottom:5,
         marginTop: 15,
         width: '80%'
       },
