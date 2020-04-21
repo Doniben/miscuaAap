@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import { atentionLines } from './components/atentionLines';
 import { LoginMiscua } from './components/LoginMiscua';
+import { register } from './components/register';
 import { howto } from './components/howto';
 import { main } from './components/main';
 import { creators } from './components/creators';
@@ -19,8 +20,8 @@ export default function MyStack() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen 
-          name="LoginMiscua"
-          component={ LoginMiscua } 
+          name="register"
+          component={ register } 
           options={{ headerShown: false }}
         />
         <Stack.Screen
