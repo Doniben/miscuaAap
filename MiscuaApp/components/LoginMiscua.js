@@ -1,5 +1,7 @@
 
 import React, { useState } from 'react';
+import { AsyncStorage } from "react-native";
+import axios from 'axios'
 
 
 import {
@@ -47,85 +49,129 @@ export function LoginMiscua({ navigation }){
                         password: ''
                         }
                     user['password'] = confirmedPassword;
-                    user['phone'] = confirmedPhone;
+                    user['phone'] = confirmedPhone.toString();
                     console.log('Número correcto', user)
+                    const HOST = 'https://covid19.ieliot.com/' 
+                    var postData = {
+                        "username": user.phone,
+                        "password": user.password
+                    };
+                    let axiosConfig = {
+                        headers: {
+                            'Content-Type': 'application/json'
+                            }
+                    };
+                    axios.post( `${HOST}` + 'rest/v1/login/', postData, axiosConfig)
+                    .then(function (response) {
+                        if (response.status === 200) {
+                            const tokenUser = response.data['token'].toString();
+                            const tokenretrive = '';
+                            const _storeData = async () => {
+                                try {
+                                    await AsyncStorage.setItem('token', `${tokenUser}`);
+                                } catch (error) {
+                                    Alert.alert('Error almacenar datos');
+
+                                }
+                            }
+                            const _retrieveData = async () => {
+                                try {
+                                    const value = await AsyncStorage.getItem('token');
+                                    if (value !== null) {
+                                        // Our data is fetched successfully
+                                        console.log('value', value)
+                                        tokenretrive = value;
+                                    }
+                                } catch (error) {
+                                    // Error retrieving data
+                                }
+                            }
+                            _storeData();
+                            _retrieveData();
+                            navigation.navigate('howto');
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
                     setEnteredPhone('');
                     setEnteredPassword('');
                     Alert.alert('Por favor espera','Estamos Validando tus datos...')}
-                }
-        }         
-    return (
-        <TouchableWithoutFeedback onPress={()=>{
-            Keyboard.dismiss();
-        }}>
-            <SafeAreaView style={styles.safe}>
-            <View style={styles.generalContainer}>
-            <ScrollView>
-                    <View style={styles.headerContainer}>
-                        <View>
-                            <Image style={styles.logo} source={require('../assets/img/01.png')}/>
-                        </View>
-                        <View style={styles.tittle}>
-                            <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
-                        </View>
-                    </View>
-                    <View style={styles.loginContainer}>
-                        <View style={styles.inputView}>
-                            <View style={styles.left}>
-                                <Image 
-                                style={styles.logoTel}
-                                source={require('../assets/img/phone-2058848.png')}
-                                />
+               }
+        }
+        return (
+            <TouchableWithoutFeedback onPress={()=>{
+                Keyboard.dismiss();
+                }}>
+                <SafeAreaView style={styles.safe}>
+                <View style={styles.generalContainer}>
+                <ScrollView>
+                        <View style={styles.headerContainer}>
+                            <View>
+                                <Image style={styles.logo} source={require('../assets/img/01.png')}/>
                             </View>
-                            <View style={styles.right}>
-                                <TextInput
-                                    style={styles.inputText}
-                                    placeholder='Teléfono'
-                                    placeholderTextColor= 'rgb(162, 162, 162)'
-                                    maxLength={10}
-                                    keyboardType={'number-pad'}
-                                    autoCapitalize="none"
-                                    blurOnSubmit
-                                    onChangeText={numberInputHandler}
-                                    value={enteredPhone}
-                                    
-                                />
+                            <View style={styles.tittle}>
+                                <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
                             </View>
                         </View>
-                        <View style={styles.inputView}>
-                            <View style={styles.left}>
-                                <Image 
-                                style={styles.logoTel}
-                                source={require('../assets/img/icon-lock-32.png')}
-                                />
+                        <View style={styles.loginContainer}>
+                            <View style={styles.inputView}>
+                                <View style={styles.left}>
+                                    <Image 
+                                    style={styles.logoTel}
+                                    source={require('../assets/img/phone-2058848.png')}
+                                    />
+                                </View>
+                                <View style={styles.right}>
+                                    <TextInput
+                                        style={styles.inputText}
+                                        placeholder='Teléfono'
+                                        placeholderTextColor= 'rgb(162, 162, 162)'
+                                        maxLength={10}
+                                        keyboardType={'number-pad'}
+                                        autoCapitalize="none"
+                                        blurOnSubmit
+                                        onChangeText={numberInputHandler}
+                                        value={enteredPhone}
+                                        
+                                    />
+                                </View>
                             </View>
-                            <View style={styles.right}>
-                                <TextInput
-                                    style={styles.inputText}
-                                    placeholder='Contraseña'
-                                    placeholderTextColor= 'rgb(162, 162, 162)'
-                                    secureTextEntry= {true}
-                                    onChangeText={setEnteredPassword}
-                                    value={enteredPassword}
-                                />
-                            </View> 
+                            <View style={styles.inputView}>
+                                <View style={styles.left}>
+                                    <Image 
+                                    style={styles.logoTel}
+                                    source={require('../assets/img/icon-lock-32.png')}
+                                    />
+                                </View>
+                                <View style={styles.right}>
+                                    <TextInput
+                                        style={styles.inputText}
+                                        placeholder='Contraseña'
+                                        placeholderTextColor= 'rgb(162, 162, 162)'
+                                        secureTextEntry= {true}
+                                        onChangeText={setEnteredPassword}
+                                        value={enteredPassword}
+                                    />
+                                </View> 
+                            </View>
+                            <TouchableOpacity  style={styles.loginBtn} onPress={(confirmInputHandler)}>
+                                <Text style={styles.loginText} >
+                                    INGRESA</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={styles.forgot}>Olvidé mi contraseña</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.registerText} onPress={() => navigation.navigate('register')}>
+                                <Text><Text style={styles.registerTextWithout}>No tengo cuenta,  </Text><Text style={styles.registerLink}>REGISTRARME</Text></Text>
+                            </TouchableOpacity>
                         </View>
-                        <TouchableOpacity  style={styles.loginBtn} onPress={(confirmInputHandler)}>
-                            <Text style={styles.loginText} >
-                                INGRESA</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Text style={styles.forgot}>Olvidé mi contraseña</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.registerText} onPress={() => navigation.navigate('register')}>
-                            <Text><Text style={styles.registerTextWithout}>No tengo cuenta,  </Text><Text style={styles.registerLink}>REGISTRARME</Text></Text>
-                        </TouchableOpacity>
-                    </View>
-                    </ScrollView>
-            </View>
-            
-        </SafeAreaView> 
-        </TouchableWithoutFeedback>
+                        </ScrollView>
+                </View>
+                
+            </SafeAreaView> 
+            </TouchableWithoutFeedback>
         )};
 
 

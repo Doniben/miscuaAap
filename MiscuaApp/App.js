@@ -20,13 +20,13 @@ export default function MyStack() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen 
-          name="register"
-          component={ register } 
+          name="LoginMiscua"
+          component={ LoginMiscua } 
           options={{ headerShown: false }}
         />
         <Stack.Screen 
-          name="LoginMiscua"
-          component={ LoginMiscua } 
+          name="register"
+          component={ register } 
           options={{ headerShown: false }}
         />
         <Stack.Screen

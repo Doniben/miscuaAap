@@ -80,7 +80,9 @@ export function register({ navigation }){
                         };
                         axios.post( `${HOST}` + 'rest/v1/device/', postData, axiosConfig)
                           .then(function (response) {
-                            navigation.navigate('LoginMiscua');
+                              if (response.status === 200) {
+                                navigation.navigate('LoginMiscua');
+                              }
                           })
                           .catch(function (error) {
                             console.log(error);
@@ -123,9 +125,7 @@ export function register({ navigation }){
                                         <Image 
                                             style={styles.logoTel}
                                             source={require('../assets/img/phone-2058848.png')}
-                                        />
-                                    </View>
-                                    <View style={styles.right}>
+                                        /> </View> <View style={styles.right}>
                                         <TextInput
                                             style={styles.inputText}
                                             placeholder='Teléfono'
