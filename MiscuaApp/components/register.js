@@ -159,10 +159,10 @@ export function register({ navigation }){
                             </TouchableOpacity>
                             <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'center', width: '80%'}}>
                                 <CheckBox
-                                checkedIcon={<Image style={styles.checkbox} source={require('../assets/img/checked-checkbox-50.png')} />}
-                                uncheckedIcon={<Image style={styles.checkbox} source={require('../assets/img/unchecked-checkbox-50.png')} />}
-                                checked={checked}
-                                onPress={(changeCheck)}
+                                    checkedIcon={<Image style={styles.checkbox} source={require('../assets/img/checked-checkbox-50.png')} />}
+                                    uncheckedIcon={<Image style={styles.checkbox} source={require('../assets/img/unchecked-checkbox-50.png')} />}
+                                    checked={checked}
+                                    onPress={(changeCheck)}
                                 />
                                 <Text style={styles.forgot}>Acepto <Text style={styles.link} onPress={terms} >términos y condiciones</Text></Text>
                             </TouchableOpacity>
@@ -206,7 +206,6 @@ const styles = StyleSheet.create({
     loginContainer: {
       alignItems: 'center',
       justifyContent: 'center',
-      fontFamily: 'Montserrat-Medium',
       marginTop: Platform.select({
           ios: 10,
           android: 10
