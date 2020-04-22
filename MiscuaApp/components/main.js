@@ -37,7 +37,7 @@ export function main({ navigation }){
                                 source={require('../assets/img/walk.png')}
                             />
                         </View>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress= {() => navigation.navigate('map')}>
                             <Text style={styles.exitButton}>
                                 VOY A SALIR DE CASA
                             </Text>
