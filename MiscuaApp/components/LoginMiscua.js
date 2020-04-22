@@ -64,40 +64,44 @@ export function LoginMiscua({ navigation }){
                     axios.post( `${HOST}` + 'rest/v1/login/', postData, axiosConfig)
                     .then(function (response) {
                         if (response.status === 200) {
-                            const tokenUser = response.data['token'].toString();
-                            const tokenretrive = '';
-                            const _storeData = async () => {
-                                try {
-                                    await AsyncStorage.setItem('token', `${tokenUser}`);
-                                } catch (error) {
-                                    Alert.alert('Error almacenar datos');
-                                }
-                            }
-                            const _retrieveData = async () => {
-                                try {
-                                    const value = await AsyncStorage.getItem('token');
-                                    if (value !== null) {
-                                        // Our data is fetched successfully
-                                        console.log('value', value)
-                                        tokenretrive = value;
+                            if (response.data['token'] !== undefined) {
+                                const tokenUser = response.data['token'].toString();
+                                const tokenretrive = '';
+                                const _storeData = async () => {
+                                    try {
+                                        await AsyncStorage.setItem('token', `${tokenUser}`);
+                                    } catch (error) {
+                                        Alert.alert('Error almacenar datos');
                                     }
-                                } catch (error) {
-                                    // Error retrieving data
                                 }
+                                const _retrieveData = async () => {
+                                    try {
+                                        const value = await AsyncStorage.getItem('token');
+                                        if (value !== null) {
+                                            // Our data is fetched successfully
+                                            console.log('value', value)
+                                            tokenretrive = value;
+                                        }
+                                    } catch (error) {
+                                            // Our data is fetched successfully
+                                    }
+                                }
+                                _storeData();
+                                _retrieveData();
+                                Alert.alert('Inicio de sesion exitoso');
+                                setEnteredPhone('');
+                                setEnteredPassword('');
+                                navigation.navigate('howto');
+                            } else {
+                                Alert.alert('Usuario o Password incorrectos');
+                                setEnteredPhone('');
+                                setEnteredPassword('');
                             }
-                            _storeData();
-                            _retrieveData();
-                            navigation.navigate('howto');
-                        }
+                        } 
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
-                    setEnteredPhone('');
-                    setEnteredPassword('');
-                    Alert.alert('Ingreso correcto!')
-                    navigation.navigate('howto')
-                        
                 }
             }
         }         
