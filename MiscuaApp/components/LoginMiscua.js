@@ -16,6 +16,8 @@ import {
 } from 'react-native';
 
 import { ScrollView } from 'react-native-gesture-handler';
+import  axios  from 'axios';
+import {AsyncStorage} from 'react-native';
 
 export function LoginMiscua({ navigation }){
    
@@ -46,8 +48,51 @@ export function LoginMiscua({ navigation }){
                         password: ''
                         }
                     user['password'] = confirmedPassword;
-                    user['phone'] = confirmedPhone;
+                    user['phone'] = confirmedPhone.toString();
                     console.log('Successful', user)
+                    
+                    const HOST = 'https://covid19.ieliot.com/' 
+                    var postData = {
+                        "username": user.phone,
+                        "password": user.password
+                    };
+                    let axiosConfig = {
+                        headers: {
+                            'Content-Type': 'application/json'
+                            }
+                    };
+                    axios.post( `${HOST}` + 'rest/v1/login/', postData, axiosConfig)
+                    .then(function (response) {
+                        if (response.status === 200) {
+                            const tokenUser = response.data['token'].toString();
+                            const tokenretrive = '';
+                            const _storeData = async () => {
+                                try {
+                                    await AsyncStorage.setItem('token', `${tokenUser}`);
+                                } catch (error) {
+                                    Alert.alert('Error almacenar datos');
+                                }
+                            }
+                            const _retrieveData = async () => {
+                                try {
+                                    const value = await AsyncStorage.getItem('token');
+                                    if (value !== null) {
+                                        // Our data is fetched successfully
+                                        console.log('value', value)
+                                        tokenretrive = value;
+                                    }
+                                } catch (error) {
+                                    // Error retrieving data
+                                }
+                            }
+                            _storeData();
+                            _retrieveData();
+                            navigation.navigate('howto');
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
                     setEnteredPhone('');
                     setEnteredPassword('');
                     Alert.alert('Ingreso correcto!')
