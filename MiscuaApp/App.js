@@ -11,7 +11,8 @@ import { main } from './components/main';
 import { creators } from './components/creators';
 import { confirmationScreen } from './components/confirmationScreen';
 import { positiveConfirmation } from './components/positiveConfirmation';
-import { map } from './components/map'
+import { map } from './components/map';
+import { analyzingContagion } from './components/analyzingContagion';
 
 
 const Stack = createStackNavigator();
@@ -63,6 +64,11 @@ export default function MyStack() {
         <Stack.Screen 
           name="confirmationScreen" 
           component={ confirmationScreen } 
+          options={{ headerShown: false }}
+        /> 
+        <Stack.Screen 
+          name="analyzingContagion" 
+          component={ analyzingContagion } 
           options={{ headerShown: false }}
         /> 
       </Stack.Navigator>
