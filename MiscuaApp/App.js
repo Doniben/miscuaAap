@@ -13,6 +13,10 @@ import { confirmationScreen } from './components/confirmationScreen';
 import { positiveConfirmation } from './components/positiveConfirmation';
 import { map } from './components/map';
 import { analyzingContagion } from './components/analyzingContagion';
+import { symptoms } from './components/symptoms';
+import { activities } from './components/activities';
+import { passwordRequest } from './components/passwordRequest';
+import { recomendations } from './components/recomendations';
 
 
 const Stack = createStackNavigator();
@@ -31,6 +35,22 @@ export default function MyStack() {
           component={ register } 
           options={{ headerShown: false }}
         />
+        <Stack.Screen 
+          name="passwordRequest"
+          component={ passwordRequest } 
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen 
+          name="symptoms"
+          component={ symptoms } 
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="activities"
+          component={ activities } 
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="howto"
           component={ howto }
@@ -39,6 +59,11 @@ export default function MyStack() {
         <Stack.Screen
           name="main"
           component={ main }
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="recomendations"
+          component={ recomendations }
           options={{ headerShown: false }}
         />
         <Stack.Screen
