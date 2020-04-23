@@ -169,7 +169,8 @@ export function LoginMiscua({ navigation }){
                         <TouchableOpacity onPress={() => navigation.navigate('passwordRequest')}>
                             <Text style={styles.forgot}>Olvidé mi contraseña</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.registerText} onPress={() =>                                 navigation.reset({
+                        <TouchableOpacity style={styles.registerText} onPress={() =>
+                            navigation.reset({
                                     index: 0,
                                     routes: [{ name: 'register' }],})}>
                             <Text><Text style={styles.registerTextWithout}>No tengo cuenta,  </Text><Text style={styles.registerLink}>REGISTRARME</Text></Text>
