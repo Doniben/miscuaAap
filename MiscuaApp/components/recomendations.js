@@ -15,7 +15,7 @@ export function recomendations ({ navigation, navigation: { goBack } }){
         <SafeAreaView style={styles.safe}>
             <View style={styles.generalContainer}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => goBack()}>
+                    <TouchableOpacity onPress={() => {}}>
                         <Image style={styles.leftNavigation} source={require('../assets/img/back-50.png')}/>  
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
