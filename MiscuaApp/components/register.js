@@ -19,7 +19,7 @@ import {
 
 import { ScrollView } from 'react-native-gesture-handler';
 
-export function register({ navigation }){
+export function register({ navigation, navigation: { goBack } }){
     const [enteredPhone, setEnteredPhone] = useState('');
     const [enteredAge, setEnteredAge] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
@@ -83,12 +83,19 @@ export function register({ navigation }){
                                 {
                                     console.log('USUARIO NUEVO REGISTRADO!')
                                     Alert.alert('Registro exitoso!','Ya puedes iniciar sesión')
-                                    navigation.navigate('login');
+                                    navigation.reset({
+                                        index: 0,
+                                        routes: [{ name: 'LoginMiscua' }],
+                                      });
                                 }
                             else if (response.data.err[110] === 'd' && response.data.err[111] === 'u')
                             {
                                 console.log('USUARIO YA EXISTE')
                                 Alert.alert('Error!','Este usuario ya está registrado')
+                                setEnteredPhone('');
+                                setEnteredAge('');
+                                setEnteredPassword('');
+                                setChecked(false);
                             }
                             else
                             {
@@ -103,9 +110,7 @@ export function register({ navigation }){
                           .catch(function (error) {
                             console.log(error);
                           });
-                   //     setEnteredPhone('');
-                   //     setEnteredAge('');
-                   //     setEnteredPassword('');
+                   
                     //    Alert.alert('Registro exitoso!','Ya puedes iniciar sesión')
                         //navigation.navigate('login')
                     }
@@ -211,6 +216,9 @@ export function register({ navigation }){
                             <View style={styles.registerText}>
                                 <Text style={styles.registerTextWithout}>Entre todos saldremos de esta situación</Text>
                             </View>
+                            <TouchableOpacity>
+                                <Text style={styles.backLogin} onPress={()=> navigation.navigate('LoginMiscua')}>Regresar</Text>
+                            </TouchableOpacity>
                         </View>
                     </ScrollView>
                 </View>
@@ -239,7 +247,7 @@ const styles = StyleSheet.create({
         height: 160, 
         marginTop: Platform.select({
             ios: 5,
-            android: 30
+            android: 15,
         }),
         padding: 10,
         paddingBottom: 0,
@@ -250,7 +258,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       marginTop: Platform.select({
           ios: 10,
-          android: 10
+          android: 0
       })
     },
     inputView:{
@@ -281,15 +289,6 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         alignSelf: 'flex-start',
       },
-
-      forgot:{
-        color: 'rgb(162, 162, 162)',
-        fontSize:14,
-        marginTop: 15,
-        marginLeft: -15,
-        width: '80%'
-      },
-
       loginBtn:{
         width:"80%",
         backgroundColor: 'rgb(90, 204, 193)',
@@ -297,7 +296,7 @@ const styles = StyleSheet.create({
         height:50,
         alignItems:"center",
         justifyContent:"center",
-        marginTop:40,
+        marginTop:30,
         marginBottom:10
       },
       loginText: {
@@ -325,9 +324,21 @@ const styles = StyleSheet.create({
         paddingBottom: 0,
         resizeMode: 'contain'
     },
+    forgot:{
+        color: 'rgb(162, 162, 162)',
+        fontSize:14,
+        marginTop: 15,
+        marginLeft: -15,
+        width: '80%'
+      },
     link:{
         textDecorationLine:'underline',
     },
-
-  },
-);
+    backLogin:{
+        marginTop:20,
+        color: 'rgb(162, 162, 162)',
+        fontSize:14,
+        width: '80%',
+        textDecorationLine:'underline',
+      },
+});
