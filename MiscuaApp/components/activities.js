@@ -27,7 +27,7 @@ export function activities ({ navigation }){
         else {
             navigation.reset({
                 index: 0,
-                routes: [{ name: 'map' }],});
+                routes: [{ name: 'recomendations' }],});
             console.log(listActivities);
             }
     }
