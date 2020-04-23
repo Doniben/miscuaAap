@@ -9,8 +9,9 @@ import {
     Platform,
     SafeAreaView
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-export function confirmationScreen ({ navigation }) {
+export function confirmationScreen ({ navigation, navigation: { goBack } }) {
         return (
             <SafeAreaView style={styles.safeArea}>
                 <View style={styles.Container}>
