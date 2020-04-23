@@ -32,101 +32,41 @@ export function activities ({ navigation }){
             }
     }
     const addActivity1 = (a) => {
-        if (statusPress1 === false)
-        {listActivities.push(a)}
-        else {
-            listActivities.splice( listActivities.indexOf(a), 1 );
-        }
+        statusPress1 ? listActivities.splice( listActivities.indexOf(a), 1 ) : listActivities.push(a)
     }
     const addActivity2 = (a) => {
-        if (statusPress2 === false)
-        {listActivities.push(a)}
-        else {
-            listActivities.splice( listActivities.indexOf(a), 1 );
-        }
+        statusPress2 ? listActivities.splice( listActivities.indexOf(a), 1 ) : listActivities.push(a)
     }
     const addActivity3 = (a) => {
-        if (statusPress3 === false)
-        {listActivities.push(a)}
-        else {
-            listActivities.splice( listActivities.indexOf(a), 1 );
-        }
+        statusPress3 ? listActivities.splice( listActivities.indexOf(a), 1 ) : listActivities.push(a)
     }
     const addActivity4 = (a) => {
-        if (statusPress4 === false)
-        {listActivities.push(a)}
-        else {
-            listActivities.splice( listActivities.indexOf(a), 1 );
-        }
+        statusPress4 ? listActivities.splice( listActivities.indexOf(a), 1 ) : listActivities.push(a)
     }
     const addActivity5 = (a) => {
-        if (statusPress5 === false)
-        {listActivities.push(a)}
-        else {
-            listActivities.splice( listActivities.indexOf(a), 1 );
-        }
+        statusPress5 ? listActivities.splice( listActivities.indexOf(a), 1 ) : listActivities.push(a)
     }
     const addActivity6 = (a) => {
-        if (statusPress6 === false)
-        {listActivities.push(a)}
-        else {
-            listActivities.splice( listActivities.indexOf(a), 1 );
-        }
+        statusPress6 ? listActivities.splice( listActivities.indexOf(a), 1 ) : listActivities.push(a)
     }
 
     const changeStatus1 = () => {
-        if (statusPress1 === false)
-        {
-            setStatuspress1(true);
-        }
-        else{
-            setStatuspress1(false);
-        }
+        statusPress1 ? setStatuspress1(false): setStatuspress1(true);
     }
     const changeStatus2 = () => {
-        if (statusPress2 === false)
-        {
-            setStatuspress2(true);
-        }
-        else{
-            setStatuspress2(false);
-        }
+        statusPress2 ? setStatuspress2(false): setStatuspress2(true);
     }
     const changeStatus3 = () => {
-        if (statusPress3 === false)
-        {
-            setStatuspress3(true);
-        }
-        else{
-            setStatuspress3(false);
-        }
+        statusPress3 ? setStatuspress3(false): setStatuspress3(true);
     }
     const changeStatus4 = () => {
-        if (statusPress4 === false)
-        {
-            setStatuspress4(true);
-        }
-        else{
-            setStatuspress4(false);
-        }
+        statusPress4 ? setStatuspress4(false): setStatuspress4(true);
     }
     const changeStatus5 = () => {
-        if (statusPress5 === false)
-        {
-            setStatuspress5(true);
-        }
-        else{
-            setStatuspress5(false);
-        }
+        statusPress5 ? setStatuspress5(false): setStatuspress5(true);
     }
     const changeStatus6 = () => {
-        if (statusPress6 === false)
-        {
-            setStatuspress6(true);
-        }
-        else{
-            setStatuspress6(false);
-        }
+        statusPress6 ? setStatuspress6(false): setStatuspress6(true);
     }
     return (
         <SafeAreaView style={styles.safe}>
