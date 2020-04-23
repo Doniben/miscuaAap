@@ -10,12 +10,12 @@ import {
     SafeAreaView,
 } from 'react-native';
 
-export function recomendations ({ navigation }){
+export function recomendations ({ navigation, navigation: { goBack } }){
     return (
         <SafeAreaView style={styles.safe}>
             <View style={styles.generalContainer}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                    <TouchableOpacity onPress={() => goBack()}>
                         <Image style={styles.leftNavigation} source={require('../assets/img/back-50.png')}/>  
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
@@ -62,8 +62,8 @@ export function recomendations ({ navigation }){
                     </View>
                 </View>
                 <View style={styles.footer}>
-                <TouchableOpacity style={styles.loginBtn}>
-                    <LinearGradient style={styles.loginBtn}  colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}>
+                <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate('map')}>
+                    <LinearGradient style={styles.loginBtn} colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}>
                         <Text style={styles.loginText}>HECHO</Text>
                     </LinearGradient>
                 </TouchableOpacity>
