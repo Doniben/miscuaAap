@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
-export function passwordRequest({ navigation }){
+export function passwordRequest({ navigation, navigation: {goBack} }){
     const [enteredPhone, setEnteredPhone] = useState('');
     const [enteredAge, setEnteredAge] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
@@ -54,8 +54,8 @@ export function passwordRequest({ navigation }){
                             setEnteredPhone('');
                             setEnteredAge('');
                             setEnteredPassword('');
-                            Alert.alert('Bien!','Contraseña cambiada!');
-                            navigation.navigate('login');
+                            Alert.alert('Atencion!','Esta funcion aún no está disponible, contacta con soporte!');
+                            navigation.navigate('LoginMiscua');
                         }
                 }
             }                
@@ -144,6 +144,9 @@ export function passwordRequest({ navigation }){
                                 </TouchableOpacity>
                                 <View style={styles.registerText}>
                                     <Text style={styles.registerTextWithout}>Entre todos saldremos de esta situación</Text>
+                                    <TouchableOpacity style={styles.registerTextWithout}>
+                                <Text style={styles.backLogin} onPress={()=> goBack()}>Regresar</Text>
+                            </TouchableOpacity>
                                 </View>
                             </View>
                         </ScrollView>
@@ -260,10 +263,7 @@ const styles = StyleSheet.create({
       },
       registerTextWithout: {
         color: 'white',
-        paddingBottom: Platform.select({
-            ios: 70,
-            android: 25
-        }),
+        alignSelf:'center',
         marginTop: Platform.select({
             ios: 20,
             android: 10
@@ -279,6 +279,12 @@ const styles = StyleSheet.create({
         marginLeft: 100,
         paddingBottom: 0,
         resizeMode: 'contain'
-    }
+    },
+    backLogin:{
+        color: 'rgb(162, 162, 162)',
+        fontSize:14,
+        width: '80%',
+        textDecorationLine:'underline',
+      },
   },
 );
