@@ -28,7 +28,7 @@ export function map({ navigation }){
                 </View>
                 <View style={styles.mapContainer}>
                     <View style={styles.homeArrive}>
-                        <TouchableOpacity onPress={() => navigation.navigate('mapOptions')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
                             <Image style={styles.rightHomeArrive}
                                 source={require('../assets/img/here.png')}
                             />  
@@ -42,7 +42,7 @@ export function map({ navigation }){
                     
                 </View>
                 <View style={styles.footerView}>
-                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('mapOptions')}>
                         <Image
                         style={styles.optionsMap}
                         source={require('../assets/img/cone.png')}

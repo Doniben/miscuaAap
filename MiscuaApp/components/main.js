@@ -35,11 +35,7 @@ export function main({ navigation, navigation: { goBack} }){
                                 source={require('../assets/img/walk.png')}
                             />
                         </View>
-<<<<<<< HEAD
-                        <TouchableOpacity onPress= {() => navigation.navigate('recomendations')}>
-=======
                         <TouchableOpacity onPress= {() => navigation.navigate('activities')}>
->>>>>>> d38051731049aee4ab9942bf737876e357b85853
                             <Text style={styles.exitButton}>
                                 VOY A SALIR DE CASA
                             </Text>
