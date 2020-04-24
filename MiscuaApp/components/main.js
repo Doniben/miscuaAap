@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 
 import {
     Image,
@@ -12,12 +10,12 @@ import {
     SafeAreaView
 } from 'react-native';
 
-export function main({ navigation }){
+export function main({ navigation, navigation: { goBack} }){
     return (
         <SafeAreaView style={styles.safeContainer}>                
             <View style={styles.mainContainer}>
                 <View style={styles.header}>
-                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                        <TouchableOpacity onPress={()=> goBack()}>
                             <Image style={styles.leftNavigation}
                                 source={require('../assets/img/back-50.png')}
                             />  
@@ -37,7 +35,11 @@ export function main({ navigation }){
                                 source={require('../assets/img/walk.png')}
                             />
                         </View>
+<<<<<<< HEAD
                         <TouchableOpacity onPress= {() => navigation.navigate('recomendations')}>
+=======
+                        <TouchableOpacity onPress= {() => navigation.navigate('activities')}>
+>>>>>>> d38051731049aee4ab9942bf737876e357b85853
                             <Text style={styles.exitButton}>
                                 VOY A SALIR DE CASA
                             </Text>

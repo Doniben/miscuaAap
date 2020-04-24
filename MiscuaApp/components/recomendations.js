@@ -10,12 +10,12 @@ import {
     SafeAreaView,
 } from 'react-native';
 
-export function recomendations ({ navigation }){
+export function recomendations ({ navigation, navigation: { goBack } }){
     return (
         <SafeAreaView style={styles.safe}>
             <View style={styles.generalContainer}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                    <TouchableOpacity onPress={() => {}}>
                         <Image style={styles.leftNavigation} source={require('../assets/img/back-50.png')}/>  
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>

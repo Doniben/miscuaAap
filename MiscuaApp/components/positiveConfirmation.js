@@ -13,12 +13,12 @@ import {
 } from 'react-native';
 // import { withTheme } from 'react-native-elements';
 
-export function positiveConfirmation({ navigation }){
+export function positiveConfirmation({ navigation, navigation: { goBack } }){
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.Container}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                    <TouchableOpacity onPress={() => goBack()}>
                         <Image style={styles.leftNavigation}
                             source={require('../assets/img/back-50.png')}
                         />  
@@ -43,7 +43,11 @@ export function positiveConfirmation({ navigation }){
                         </Text>
                     </View>
                     <View>
-                        <TouchableOpacity style={styles.buttonYes} onPress={() => {navigation.navigate('confirmationScreen')}}>
+                        <TouchableOpacity style={styles.buttonYes} onPress={()=>                                 
+                            navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'confirmationScreen' }],
+                                  })}>
                             <Text style={styles.textButton}>
                                 SÍ
                             </Text>

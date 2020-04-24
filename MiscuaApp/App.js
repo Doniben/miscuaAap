@@ -18,7 +18,9 @@ import { SplashScreen } from 'expo';
 import DotSpinner from './components/loadingSpinners/dotSpinner'
 import { map } from './components/map';
 import { mapOptions } from './components/mapOptions';
-
+import { symptoms } from './components/symptoms';
+import { activities } from './components/activities';
+import { passwordRequest } from './components/passwordRequest';
 
 
 const Stack = createStackNavigator();
@@ -72,6 +74,22 @@ export default function MyStack(props) {
               <Stack.Screen 
                 name="register"
                 component={ register } 
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen 
+                name="passwordRequest"
+                component={ passwordRequest } 
+                options={{ headerShown: false }}
+              />
+
+              <Stack.Screen 
+                name="symptoms"
+                component={ symptoms } 
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen 
+                name="activities"
+                component={ activities } 
                 options={{ headerShown: false }}
               />
               <Stack.Screen
@@ -141,4 +159,4 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgb(45, 45, 68)',
   },
-});
+})
