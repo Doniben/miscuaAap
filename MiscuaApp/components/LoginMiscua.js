@@ -35,12 +35,8 @@ export function LoginMiscua({ navigation }){
             Alert.alert('Ups','Ingresa un número válido')
             }
         else{
-           const confirmedPhone = parseInt(enteredPhone);
-            if (confirmedPhone < 0 || confirmedPhone === NaN){
-                Alert.alert('Ups!','Número inválido')
-                }
             const confirmedPassword = enteredPassword;
-            if (confirmedPassword.length === 0 || confirmedPassword.length < 4){
+            if (confirmedPassword.length === 0 || confirmedPassword.length < 8){
                 Alert.alert('Ups!','Revisa tu contraseña')}
                 else{
                     const user = {
@@ -48,7 +44,7 @@ export function LoginMiscua({ navigation }){
                         password: ''
                         }
                     user['password'] = confirmedPassword;
-                    user['phone'] = confirmedPhone.toString();
+                    user['phone'] = confirmedPhone;
                     console.log('Successful', user)
                     
                     const HOST = 'https://covid19.ieliot.com/' 
@@ -91,7 +87,11 @@ export function LoginMiscua({ navigation }){
                                 Alert.alert('Inicio de sesion exitoso');
                                 setEnteredPhone('');
                                 setEnteredPassword('');
-                                navigation.navigate('howto');
+                                navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'howto' }],
+                                  });
+
                             } else {
                                 Alert.alert('Usuario o Password incorrectos');
                                 setEnteredPhone('');
@@ -169,7 +169,10 @@ export function LoginMiscua({ navigation }){
                         <TouchableOpacity onPress={() => navigation.navigate('passwordRequest')}>
                             <Text style={styles.forgot}>Olvidé mi contraseña</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.registerText} onPress={() => navigation.navigate('register')}>
+                        <TouchableOpacity style={styles.registerText} onPress={() =>
+                            navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'register' }],})}>
                             <Text><Text style={styles.registerTextWithout}>No tengo cuenta,  </Text><Text style={styles.registerLink}>REGISTRARME</Text></Text>
                         </TouchableOpacity>
                     </View>
