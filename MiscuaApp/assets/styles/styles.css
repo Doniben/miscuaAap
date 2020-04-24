@@ -1,0 +1,139 @@
+*{
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+html{
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #59488b;
+}
+h1,h2{
+    color: rgba(255,255,255,0.5);
+    font-size: 40px;
+    font-weight: 200;
+    text-align: center;
+    margin: 40px 0 0 0;
+}
+h2{
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    margin: 10px 0;
+}
+h1 span{
+    font-size: 30px;
+}
+
+a{
+    text-decoration: none;
+}
+a:hover{
+    transition: all linear 0.2s;
+}
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+
+.wrapper{
+    width: 700px;
+    margin: 0 auto;
+}
+.row{
+    text-align: center;
+    padding: 50px 0;
+}
+.span, .span_large{
+    float: left;
+    width: 100px;
+    background-color: rgba(0,0,0, 0.02);
+    height: 100px;
+    vertical-align: middle;
+    border-radius: 1px;
+    margin-right: 100px;
+}
+.span:last-child{
+    margin-right: 0px;
+}
+
+
+/*Typing Loader*/
+.typing_loader{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    -webkit-animation: typing 1s linear infinite alternate;
+       -moz-animation: Typing 1s linear infinite alternate;
+            animation: typing 1s linear infinite alternate;
+    margin: 46px auto; /* Not necessary- its only for layouting*/  
+    position: relative;
+    left: -12px;
+}
+@-webkit-keyframes typing{
+    0%{
+        background-color: rgba(255,255,255, 1);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
+                    24px 0px 0px 0px rgba(255,255,255,0.2);
+      }
+    25%{ 
+        background-color: rgba(255,255,255, 0.4);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,2), 
+                    24px 0px 0px 0px rgba(255,255,255,0.2);
+    }
+    75%{ background-color: rgba(255,255,255, 0.4);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
+                    24px 0px 0px 0px rgba(255,255,255,1);
+      }
+}
+
+@-moz-keyframes typing{
+   0%{
+        background-color: rgba(255,255,255, 1);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
+                    24px 0px 0px 0px rgba(255,255,255,0.2);
+      }
+    25%{ 
+        background-color: rgba(255,255,255, 0.4);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,2), 
+                    24px 0px 0px 0px rgba(255,255,255,0.2);
+    }
+    75%{ background-color: rgba(255,255,255, 0.4);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
+                    24px 0px 0px 0px rgba(255,255,255,1);
+      }
+}
+
+@keyframes typing{
+   0%{
+        background-color: rgba(255,255,255, 1);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
+                    24px 0px 0px 0px rgba(255,255,255,0.2);
+      }
+    25%{ 
+        background-color: rgba(255,255,255, 0.4);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,2), 
+                    24px 0px 0px 0px rgba(255,255,255,0.2);
+    }
+    75%{ background-color: rgba(255,255,255, 0.4);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
+                    24px 0px 0px 0px rgba(255,255,255,1);
+      }
+}
+

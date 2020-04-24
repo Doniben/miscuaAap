@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { LinearGradient } from 'expo-linear-gradient'
+
 
 import {
     Text,
@@ -13,54 +13,52 @@ import {
 } from 'react-native';
 // import { withTheme } from 'react-native-elements';
 
-export function positiveConfirmation({ navigation }){
+export function mapOptions({ navigation }){
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.Container}>
-                <View style={styles.header}>
-                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
-                        <Image style={styles.leftNavigation}
-                            source={require('../assets/img/back-50.png')}
-                        />  
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
-                        <Image style={styles.rightInfo}
-                            source={require('../assets/img/info.png')}
-                        />  
-                    </TouchableOpacity>
-                </View>
                 <View style={styles.confirmationContainer}>
                     <View>
                         <Text style={styles.tittle}>
-                            ¿Estás seguro?
+                            REPORTAR
                         </Text>
+                    </View>
+                    <View style={styles.image}>
+                        <Image
+                        style={styles.imageOnTheMap}
+                        source={require('../assets/img/3x/report.png')}
+                        />
                     </View>
                     <View>
                         <Text style={styles.description}>
-                            Recuerda que de la veracidad de los datos y síntomas que 
-                            nos brindes, podremos disminuir significativamente más casos 
-                            de contagio y así ayudar a muchas personas con medidas preventivas.
+                            PUEDES USAR ESTA SECCIÓN {'\n'}PARA MARCAR EN EL MAPA:
                         </Text>
                     </View>
-                    <View>
-                        <TouchableOpacity style={styles.buttonYes} onPress={() => {navigation.navigate('confirmationScreen')}}>
-                            <Text style={styles.textButton}>
-                                SÍ
-                            </Text>
+                    <View style={styles.buttons}>
+                        <TouchableOpacity style={styles.buttonYes} onPress={() => {navigation.navigate('main')}}>
+                            <LinearGradient style={styles.loginBtn}  colors={['rgb(11, 191, 214)', 'rgb(90, 204, 193)']}>
+                                <Text style={styles.textButton}>
+                                    AGLOMERACIÓN DE PERSONAS
+                                </Text>
+                            </LinearGradient>
                         </TouchableOpacity>
                     </View>
-                    <View>
-                        <TouchableOpacity style={styles.buttonNo} onPress={() => {navigation.navigate('main')}}>
-                            <Text style={styles.textButton}>
-                                NO TOTALMENTE
-                            </Text>
+                    <View style={styles.buttons}>
+                        <TouchableOpacity style={styles.buttonYes} onPress={() => {navigation.navigate('main')}}>
+                            <LinearGradient style={styles.loginBtn}  colors={['rgb(11, 191, 214)', 'rgb(90, 204, 193)']}>
+                                <Text style={styles.textButton}>
+                                    ESTABLECIMIENTO EN CUARENTENA
+                                </Text>
+                            </LinearGradient>
                         </TouchableOpacity>
                     </View>
-                    <View>
-                        <TouchableOpacity style={styles.buttonCancel} onPress={() => navigation.navigate('main')}>
-                            <Text style={styles.textButton}>
-                                CANCELAR
-                            </Text>
+                    <View style={styles.buttons}>
+                        <TouchableOpacity style={styles.buttonYes} onPress={() => navigation.navigate('main')}>
+                            <LinearGradient style={styles.loginBtn}  colors={['rgb(11, 191, 214)', 'rgb(90, 204, 193)']}>
+                                <Text style={styles.textButton}>
+                                    REGISTRO DE CASO CON PRESENCIA MÉDICA
+                                </Text>
+                            </LinearGradient>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -108,73 +106,75 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         alignSelf: 'center',
-        width: '80%',
+        width: '90%',
 
     },
     tittle: {
         color: 'white',
-        fontSize: 24,
+        fontSize: 30,
         fontWeight: 'bold',
         marginTop: 50,
 
     },
-    description: {
-        fontSize: 14,
-        textAlign: 'center',
-        marginTop: 40,
-        color: 'white',
-        marginBottom: 40
+    image: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 30,
+        height: 150,
+        width: 150,
     },
+
+    imageOnTheMap: {
+        height: 150,
+        width: 150,
+    },
+
+    description: {
+        fontSize: 20,
+        textAlign: 'center',
+        marginTop: 10,
+        color: 'white',
+        marginBottom: 20
+    },
+
+    buttons: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '90%',
+    },
+
     buttonYes: {
         justifyContent: "center",
         alignItems: 'center',
-        backgroundColor: 'rgb(11, 191, 214)',
         borderRadius: 8,
-        height: 40,
+        height: 50,
         marginBottom: 0,
         margin: 10,
         shadowOpacity: 0.4,
-        width: 250,
+        width: '100%',
         marginTop: 30
     },
-    buttonNo: {
-        justifyContent: "center",
-        alignItems: 'center',
-        backgroundColor: 'rgb(102, 94, 255)',
-        borderRadius: 8,
-        height: 40,
-        marginBottom: 0,
-        margin: 10,
-        shadowOpacity: 0.4,
-        width: 250,
-        marginTop: 30
+    loginBtn:{
+        width:"100%",
+        borderRadius: 5,
+        height:50,
+        alignItems:"center",
+        justifyContent:"center",
+        alignSelf: 'center'
+      },
 
-    },
-    buttonCancel: {
-        justifyContent: "center",
-        alignItems: 'center',
-        backgroundColor: 'rgb(69, 79, 99)',
-        borderRadius: 8,
-        height: 40,
-        marginBottom: 0,
-        margin: 10,
-        shadowOpacity: 0.4,
-        width: 250,
-        marginTop: 30
-
-    },
     textButton: {
-        fontSize: 16,
+        fontSize: 18,
         color: 'white',
-        
+        textAlign: 'center',
     },
     footerView: {
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'center',
         marginTop: Platform.select({
-            ios: 120,
-            android: 35
+            ios: 20,
+            android: 15
         }),
         marginBottom: Platform.select({
             ios: 70,

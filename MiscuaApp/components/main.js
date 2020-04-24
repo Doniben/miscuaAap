@@ -37,14 +37,14 @@ export function main({ navigation }){
                                 source={require('../assets/img/walk.png')}
                             />
                         </View>
-                        <TouchableOpacity onPress= {() => navigation.navigate('map')}>
+                        <TouchableOpacity onPress= {() => navigation.navigate('recomendations')}>
                             <Text style={styles.exitButton}>
                                 VOY A SALIR DE CASA
                             </Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.riskAndPositive}>
-                        <TouchableOpacity style={styles.secondButtons}>
+                        <TouchableOpacity style={styles.secondButtons} onPress={() => navigation.navigate('analyzingContagion')}>
                             <Image 
                                 style={styles.riesgo}
                                 source={require('../assets/img/virusFemale.png')}/>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import {
-    Text,
     View,
     TouchableOpacity,
     Image,
@@ -29,9 +28,9 @@ export function map({ navigation }){
                 </View>
                 <View style={styles.mapContainer}>
                     <View style={styles.homeArrive}>
-                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('mapOptions')}>
                             <Image style={styles.rightHomeArrive}
-                                source={require('../assets/img/athome.png')}
+                                source={require('../assets/img/here.png')}
                             />  
                         </TouchableOpacity>
                     </View>
@@ -78,9 +77,29 @@ const styles = StyleSheet.create({
     },
 
     homeArrive: {
-        width: '100%',
+        flexDirection: 'row',
+        width: 70,
+        height: 70,
         alignItems: 'flex-end',
-        justifyContent: "center",
+        justifyContent: 'flex-end',
+        alignSelf: 'flex-end',
+        marginRight: 20,
+        marginTop: 20,
+        backgroundColor: 'rgb(51, 225, 237)',
+        borderRadius: 10,
+        shadowRadius: 0.4,
+        shadowOpacity: 0.4,
+    },
+    rightHomeArrive: {
+        margin: 10,
+        marginTop: 30,
+        width: 50,
+        height: 50,
+        shadowRadius: 0.6,
+        shadowOpacity: 0.3,
+        justifyContent: 'center',
+        alignSelf: 'center'
+
     },
     miscuaLogo: {
         width: 30,
@@ -94,29 +113,20 @@ const styles = StyleSheet.create({
         marginRight: 30,
         marginTop: 30,
     },
-    rightHomeArrive: {
-        marginRight: 20,
-        marginTop: 30,
-        backgroundColor: 'rgb(51, 225, 237)',
-        borderRadius: 30,
-        width: 60,
-        height: 60,
-        shadowRadius: 0.6,
-        shadowOpacity: 0.7,
-
-    },
 
     footerView: {
         position: "absolute",
         justifyContent: 'flex-end',
         right: 0,
         bottom: 0,
-        marginBottom: 10
+        marginBottom: 10,
+        shadowRadius: 0.4,
+        shadowOpacity: 0.3,
     },
     optionsMap: {
         width: 60,
         height: 60,
         marginRight: 20,
-        margin: 5
+        margin: 5,
     }
 })
