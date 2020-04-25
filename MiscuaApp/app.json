@@ -9,10 +9,26 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
     "scheme": "myapp",
+    "sdkVersion": "37.0.0",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.miscua.MiscuaApp"
+    },
+    "android": {
+      "package": "com.miscua.MiscuaApp",
+      "permissions": [
+      "ACCESS_COARSE_LOCATION",
+      "ACCESS_FINE_LOCATION",
+      "MANAGE_DOCUMENTS",
+      "READ_EXTERNAL_STORAGE",
+      "WRITE_EXTERNAL_STORAGE"
+      ],
+      "config": {
+        "googleMaps": { "apiKey": "AIzaSyCDkNJtemBf4YZ4w_E7eAqAiuJUrJe-_so" }   
+     }
+    },
     "splash": {
-      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,9 +37,6 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    }
+    ]
   }
 }
