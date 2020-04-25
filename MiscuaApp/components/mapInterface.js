@@ -32,6 +32,7 @@ export default class  Maps extends React.Component {
       return (
         <View style={styles.container}>
           <MapView  showsUserLocation={true} style={styles.mapStyle}
+              draggable
               initialRegion={{
                 latitude,
                 longitude,
