@@ -9,9 +9,17 @@ import {
     Platform,
     SafeAreaView
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { Audio } from 'expo-av';
+
 
 export function confirmationScreen ({ navigation, navigation: { goBack } }) {
+        async function coffin () {    
+        await Audio.Sound.createAsync(
+                require('../assets/coffinSong.mp3'),
+                { shouldPlay: true }
+            );
+        }
+        coffin();
         return (
             <SafeAreaView style={styles.safeArea}>
                 <View style={styles.Container}>
@@ -45,13 +53,12 @@ export function confirmationScreen ({ navigation, navigation: { goBack } }) {
                         <View>
                             <Image
                                 style={styles.logo}
-                                source={require('../assets/img/01.png')}/>
+                                source={require('../assets/img/tenor.gif')}/>
                             </View>
                             <View style={styles.tittle}>
                                 <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
                             </View>
                         </View>
-                        
                     </View>
                     <View style={styles.footerView}>
                         <TouchableOpacity onPress={() => navigation.navigate('creators')}>
@@ -140,12 +147,12 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: 260, 
-        height: 140, 
+        height: 180, 
         padding: 10,
         paddingBottom: 0,
         resizeMode: 'contain',
         marginTop: Platform.select({
-            ios: 40,
+            ios: 20,
             android: 10
         }),
     },
