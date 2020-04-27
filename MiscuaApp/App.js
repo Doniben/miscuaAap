@@ -15,9 +15,9 @@ import { positiveConfirmation } from './components/positiveConfirmation';
 import { analyzingContagion } from './components/analyzingContagion';
 import { recomendations } from './components/recomendations';
 import { SplashScreen } from 'expo';
+import { mapOptions } from './components/mapOptions';
 import DotSpinner from './components/loadingSpinners/dotSpinner'
 import { map } from './components/map';
-import { mapOptions } from './components/mapOptions';
 import { symptoms } from './components/symptoms';
 import { activities } from './components/activities';
 import { passwordRequest } from './components/passwordRequest';

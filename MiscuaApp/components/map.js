@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Constants, MapView, LinearGradient } from 'expo';
+import  Maps  from './mapInterface';
 
 import {
     View,
@@ -33,14 +35,11 @@ export function map({ navigation }){
                                 source={require('../assets/img/here.png')}
                             />  
                         </TouchableOpacity>
-                    </View>
-                    <View>
-
-                        {/* Map Here */}
 
                     </View>
                     
                 </View>
+                <Maps />
                 <View style={styles.footerView}>
                     <TouchableOpacity onPress={() => navigation.navigate('mapOptions')}>
                         <Image
