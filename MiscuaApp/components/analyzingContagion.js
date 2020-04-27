@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DotSpinner from './loadingSpinners/dotSpinner'
 
 import {
     Text,
@@ -38,10 +39,12 @@ export function analyzingContagion({ navigation }){
                 </View>
                 <View>
                     <Text style={styles.description}>
-                        ANALIZANDO TU HOJA DE RUTA
+                        ANALIZANDO {'\n'} TU HOJA DE RUTA
                     </Text>
                 </View>
-            {/* </View> */}
+                <View>
+                    <DotSpinner />
+                </View>
                 <View style={styles.footerView}>
                     <TouchableOpacity onPress={() => navigation.navigate('creators')}>
                         <Image
@@ -123,55 +126,20 @@ const styles = StyleSheet.create({
 
     },
     description: {
-        fontSize: 14,
+        fontSize: 20,
         textAlign: 'center',
         marginTop: 40,
         color: 'white',
-        marginBottom: 40
+        marginBottom: 40,
+        fontWeight: 'bold'
     },
-    buttonYes: {
-        justifyContent: "center",
+    defaultButtonStyle: {
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgb(11, 191, 214)',
-        borderRadius: 8,
-        height: 40,
-        marginBottom: 0,
-        margin: 10,
-        shadowOpacity: 0.4,
-        width: 250,
-        marginTop: 30
-    },
-    buttonNo: {
-        justifyContent: "center",
-        alignItems: 'center',
-        backgroundColor: 'rgb(102, 94, 255)',
-        borderRadius: 8,
-        height: 40,
-        marginBottom: 0,
-        margin: 10,
-        shadowOpacity: 0.4,
-        width: 250,
-        marginTop: 30
-
-    },
-    buttonCancel: {
-        justifyContent: "center",
-        alignItems: 'center',
-        backgroundColor: 'rgb(69, 79, 99)',
-        borderRadius: 8,
-        height: 40,
-        marginBottom: 0,
-        margin: 10,
-        shadowOpacity: 0.4,
-        width: 250,
-        marginTop: 30
-
-    },
-    textButton: {
-        fontSize: 16,
-        color: 'white',
-        
-    },
+        height: 50,
+        backgroundColor: '#25CAC6',
+      },
+    
     footerView: {
         flexDirection: 'row',
         width: '100%',

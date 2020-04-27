@@ -10,12 +10,12 @@ import {
     SafeAreaView,
 } from 'react-native';
 
-export function recomendations ({ navigation }){
+export function recomendations ({ navigation, navigation: { goBack } }){
     return (
         <SafeAreaView style={styles.safe}>
             <View style={styles.generalContainer}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                    <TouchableOpacity onPress={() => {}}>
                         <Image style={styles.leftNavigation} source={require('../assets/img/back-50.png')}/>  
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
@@ -62,7 +62,7 @@ export function recomendations ({ navigation }){
                     </View>
                 </View>
                 <View style={styles.footer}>
-                <TouchableOpacity style={styles.loginBtn}>
+                <TouchableOpacity style={styles.loginBtn} onPress={() => { navigation.navigate('gpsRequest') }}>
                     <LinearGradient style={styles.loginBtn}  colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}>
                         <Text style={styles.loginText}>HECHO</Text>
                     </LinearGradient>
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         alignSelf:'center',
         borderBottomColor:'rgb(51, 225, 237)',
         borderBottomWidth:3,
-        marginBottom:15,
+        marginBottom:30,
     },
     titleView:{
         width:'100%',
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
         width:'90%',
         height:'60%',
         alignSelf:'center',
-        marginBottom:20,
+        marginBottom:10,
         justifyContent:'center',
 
     },
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     btnimgmask:{
         width: Platform.select({
             ios: 91,
-            android:88
+            android: 88
         }),
         height: Platform.select({
             ios:58,

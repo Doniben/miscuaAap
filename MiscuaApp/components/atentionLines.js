@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-
 import {
     Text,
     View,
@@ -12,15 +9,14 @@ import {
     SafeAreaView,
     ScrollView
 } from 'react-native';
-import { withTheme } from 'react-native-elements';
 
-export function atentionLines({ navigation }){
+export function atentionLines({ navigation, navigation: { goBack } }){
     return (
         <SafeAreaView style={styles.safeArea}>
             <ScrollView>
                 <View style={styles.Container}>
                     <View style={styles.header}>
-                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                        <TouchableOpacity onPress={() => goBack()}>
                             <Image style={styles.leftNavigation} 
                                 source={require('../assets/img/back-50.png')}
                             />  
