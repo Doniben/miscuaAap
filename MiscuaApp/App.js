@@ -66,6 +66,11 @@ export default function MyStack(props) {
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
             <Stack.Navigator>
+              <Stack.Screen
+                name="map"
+                component={ map }
+                options={{ headerShown: false }}
+              />
               <Stack.Screen 
                 name="LoginMiscua"
                 component={ LoginMiscua } 
@@ -100,11 +105,6 @@ export default function MyStack(props) {
               <Stack.Screen
                 name="main"
                 component={ main }
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="map"
-                component={ map }
                 options={{ headerShown: false }}
               />
               <Stack.Screen 

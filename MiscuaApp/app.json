@@ -18,15 +18,17 @@
     "android": {
       "package": "com.miscua.MiscuaApp",
       "permissions": [
-      "ACCESS_COARSE_LOCATION",
-      "ACCESS_FINE_LOCATION",
-      "MANAGE_DOCUMENTS",
-      "READ_EXTERNAL_STORAGE",
-      "WRITE_EXTERNAL_STORAGE"
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "MANAGE_DOCUMENTS",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
       ],
       "config": {
-        "googleMaps": { "apiKey": "AIzaSyCDkNJtemBf4YZ4w_E7eAqAiuJUrJe-_so" }   
-     }
+        "googleMaps": {
+          "apiKey": "AIzaSyCDkNJtemBf4YZ4w_E7eAqAiuJUrJe-_so"
+        }
+      }
     },
     "splash": {
       "resizeMode": "contain",
@@ -37,6 +39,7 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "description": ""
   }
 }
