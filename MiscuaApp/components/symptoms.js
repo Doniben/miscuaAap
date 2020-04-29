@@ -244,7 +244,8 @@ export function symptoms ({ navigation }){
                     </View>
                 </View>
                 <View style={styles.footer}>
-                <TouchableOpacity style={styles.loginBtn} onPress={()=>console.log(listSymptoms)}>
+                <TouchableOpacity style={styles.loginBtn} onPress={()=>{console.log(listSymptoms)
+                navigation.navigate('main')}}>
                     <LinearGradient
                         style={styles.loginBtn}  
                         colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}
@@ -260,11 +261,10 @@ export function symptoms ({ navigation }){
 };
 const styles = StyleSheet.create({
     safe: {
+        flex:1,
         backgroundColor: 'white',
     },
     generalContainer:{
-        width: '100%',
-        height: '100%',
         backgroundColor: 'white',
     },
     header: {
@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
         width:'90%',
         height:'60%',
         alignSelf:'center',
-        marginBottom:20,
+        marginBottom:15,
         justifyContent:'center',
 
     },
@@ -349,35 +349,23 @@ const styles = StyleSheet.create({
         position:'absolute',
     },
     buttonleft: {
-        width: Platform.select({
-            ios:'47%',
-            android:'43%'
-        }),
-        height: Platform.select({
-            ios:'20%',
-            android:'19%',
-        }),
+        width: 80,
+        height: 80,
         backgroundColor:'rgb(45, 45, 68)',
-        borderRadius:80,
+        borderRadius:100,
         alignSelf:'center',
         justifyContent:'center',
-        marginBottom:10,
+        marginBottom:5,
         position:'relative',
     },
     buttonleftp: {
-        width: Platform.select({
-            ios:'47%',
-            android:'43%'
-        }),
-        height: Platform.select({
-            ios:'20%',
-            android:'19%',
-        }),
+        width: 80,
+        height: 80,
         backgroundColor:'rgb(51, 225, 237)',
         borderRadius:80,
         alignSelf:'center',
         justifyContent:'center',
-        marginBottom:10,
+        marginBottom:5,
         position:'relative',
     },
     btnimgheadeache:{
@@ -471,7 +459,7 @@ const styles = StyleSheet.create({
         height:'10%',
         alignSelf:'center',
         alignItems:'center',
-        marginBottom:10,        
+        marginBottom:2,        
     },
     textBtnformat:{
         fontSize:16,
@@ -479,10 +467,9 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
     },      
     footer:{
-        backgroundColor:'white',
-        alignItems:'center',
-        flexDirection:'row',
-        justifyContent:'center'
+        height:'10%',
+        justifyContent:'center',
+
     },
     loginBtn:{
         width:"90%",
@@ -495,11 +482,5 @@ const styles = StyleSheet.create({
       loginText: {
         color: 'white',
         fontWeight:'bold',
-      },
-      buttonBot:{
-        width:'100%',
-        height:'09%',
-        alignItems:'flex-end',
-        justifyContent:'center'
       },
 })
