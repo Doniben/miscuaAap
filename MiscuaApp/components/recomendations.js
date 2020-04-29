@@ -12,74 +12,92 @@ import {
 
 export function recomendations ({ navigation, navigation: { goBack } }){
     return (
-        <SafeAreaView style={styles.safe}>
             <View style={styles.generalContainer}>
-                <View style={styles.header}>
-                    <TouchableOpacity onPress={() => {}}>
-                        <Image style={styles.leftNavigation} source={require('../assets/img/back-50.png')}/>  
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
-                        <Image style={styles.rightInfo} source={require('../assets/img/info.png')}/>  
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.titleContainer}>
-                    <Text style={styles.titleView}>RECUERDA SIEMPRE</Text>
-                </View>
-                <View style={styles.recomendationsBtn}>
-                    <View style={styles.columnLeft}>
-                        <View style={styles.buttonleft}>
-                            <Image 
-                                style={styles.btnimgmask}
-                                source={require('../assets/img/mask.png')}
-                            />
-                        </View>
-                        <View style={styles.textBtn}><Text style={styles.textBtnformat}>USA SIEMPRE {'\n'}TAPABOCAS</Text></View>            
-                        <View style={styles.buttonleft}>
-                            <Image 
-                                style={styles.btnimghandShake}
-                                source={require('../assets/img/3x/handShake.png')}
-                            />
-                        </View>
-                        <View style={styles.textBtn}><Text style={styles.textBtnformat}>EVITA EL {'\n'} CONTACTO</Text></View>                        
+                <SafeAreaView style={styles.safe}>
+                    <View style={styles.header}>
+                        <TouchableOpacity onPress={() => {}}>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
+                            <Image style={styles.rightInfo} source={require('../assets/img/info.png')}/>  
+                        </TouchableOpacity>
                     </View>
-                    <View style={styles.columnRight}>
-                        <View style={styles.buttonleft}>
-                            <Image 
-                                style={styles.btnimghands}
-                                source={require('../assets/img/3x/hands.png')}
-                            />
+                    <View style={styles.titleContainer}>
+                        <View style={styles.titleView}>
+                        <Text style={styles.textTitleView}>RECUERDA SIEMPRE</Text>
                         </View>
-                        <View style={styles.textBtn}>
-                            <Text style={styles.textBtnformat}>LÁVATE LAS {'\n'} MANOS</Text>
-                        </View>                                            
-                        <View style={styles.buttonleft}>
-                            <Image 
-                                style={styles.btnimghome}
-                                source={require('../assets/img/home.png')}
-                            />
-                        </View>
-                        <View style={styles.textBtn}><Text style={styles.textBtnformat}>QUÉDATE {'\n'} EN CASA</Text></View>                                
                     </View>
-                </View>
-                <View style={styles.footer}>
-                <TouchableOpacity style={styles.loginBtn} onPress={() => { navigation.navigate('gpsRequest') }}>
-                    <LinearGradient style={styles.loginBtn}  colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}>
-                        <Text style={styles.loginText}>HECHO</Text>
-                    </LinearGradient>
-                </TouchableOpacity>
-                </View>
-                <View style={styles.buttonBot}><Image style={styles.creatorsimg} source={require('../assets/img/logo.png')}/></View>
+                    <View style={styles.recomendationsBtn}>
+                        <View>
+                        <TouchableOpacity
+                            activeOpacity={1}
+                            style={styles.buttonleft}>
+                            <View style={styles.boximg}>
+                                <Image 
+                                    style={styles.btnimgmask}
+                                    source={require('../assets/img/mask.png')}/>
+                            </View>
+                             
+                        </TouchableOpacity>   
+                        <View style={styles.textBtn}><Text style={styles.textBtnformat}>USA SIEMPRE {'\n'}TAPABOCAS</Text></View> 
+                        </View>                                         
+                        <View>
+                        <TouchableOpacity
+                            activeOpacity={1}
+                            style={styles.buttonleft}>
+                            <View style={styles.boximg}>
+                                <Image 
+                                    style={styles.btnimghands}
+                                    source={require('../assets/img/3x/hands.png')}/>
+                            </View>
+                             
+                        </TouchableOpacity>   
+                        <View style={styles.textBtn}><Text style={styles.textBtnformat}>LÁVATE LAS{'\n'}MANOS</Text></View> 
+                        </View>                                           
+                        <View>
+                        <TouchableOpacity
+                            activeOpacity={1}
+                            style={styles.buttonleft}>
+                            <View style={styles.boximg}>
+                                <Image 
+                                    style={styles.btnimghandShake}
+                                    source={require('../assets/img/3x/handShake.png')}/>
+                            </View>
+                             
+                        </TouchableOpacity>   
+                        <View style={styles.textBtn}><Text style={styles.textBtnformat}>EVITA EL{'\n'}CONTACTO</Text></View> 
+                        </View>                                             
+                        <View>
+                        <TouchableOpacity
+                            activeOpacity={1}
+                            style={styles.buttonleft}>
+                            <View style={styles.boximg}>
+                                <Image 
+                                    style={styles.btnimghome}
+                                    source={require('../assets/img/home.png')}/>
+                            </View>
+                             
+                        </TouchableOpacity>   
+                        <View style={styles.textBtn}><Text style={styles.textBtnformat}>QUÉDATE{'\n'}EN CASA</Text></View> 
+                        </View>     
+                    </View>
+                    <View style={styles.footer}>
+                        <TouchableOpacity style={styles.loginBtn} onPress={() => { navigation.navigate('gpsRequest') }}>
+                            <LinearGradient style={styles.loginBtn}  colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}>
+                                <Text style={styles.loginText}>HECHO</Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                    </View>
+                </SafeAreaView>
             </View>
-        </SafeAreaView>
     )
 };
 const styles = StyleSheet.create({
     safe: {
+        flex:1,
         backgroundColor: 'white',
     },
     generalContainer:{
-        width: '100%',
-        height: '100%',
+        flex:6,
         backgroundColor: 'white',
     },
     header: {
@@ -102,55 +120,46 @@ const styles = StyleSheet.create({
         marginTop: 30,
     },
     titleContainer:{
-        width:'55%',
-        height:25,
+        height:'10%',
         alignItems:'center',
-        justifyContent:'center',
-        alignSelf:'center',
-        borderBottomColor:'rgb(51, 225, 237)',
-        borderBottomWidth:3,
-        marginBottom:30,
+        justifyContent:'center'
     },
     titleView:{
-        width:'100%',
-        textAlign:'center',
-        fontSize:20,
-        fontWeight:'bold',
+        borderBottomColor:'rgb(51, 225, 237)',
+        borderBottomWidth:3,
     },
+    textTitleView:{
+    textAlign:'center',
+    fontSize:20,
+    fontWeight:'bold',
+    },
+    
     recomendationsBtn: {
-        width:'90%',
         height:'60%',
-        alignSelf:'center',
-        marginBottom:10,
+        flexDirection:'row',
+        flexWrap:'wrap',
         justifyContent:'center',
-
-    },
-    columnLeft:{
-        width:'50%',
-        height:'100%',
-        alignSelf:'flex-start',
-    },
-    columnRight:{
-        width:'50%',
-        height:'100%',
-        alignSelf:'flex-end',
-        position:'absolute',
+        marginTop:10,
+        paddingTop:Platform.select({
+            ios:25,
+        })
     },
     buttonleft: {
         width: Platform.select({
-            ios:'68%',
-            android:'65%'
+            ios:126,
+            android:110,
         }),
         height: Platform.select({
-            ios:'29%',
-            android:'29%',
+            ios:126,
+            android:110,
         }),
         backgroundColor:'rgb(45, 45, 68)',
-        borderRadius:80,
+        borderRadius:100,
         alignSelf:'center',
         justifyContent:'center',
-        marginBottom:10,
-        position:'relative',
+        marginBottom:2,
+        marginRight:25,
+        marginLeft:25,
     },
     btnimgmask:{
         width: Platform.select({
@@ -161,7 +170,6 @@ const styles = StyleSheet.create({
             ios:58,
             android:55,
         }),
-        position:'absolute',
         alignSelf:'center',
         justifyContent:'center'
     },
@@ -174,7 +182,6 @@ const styles = StyleSheet.create({
             ios:85,
             android:79,
         }),
-        position:'absolute',
         alignSelf:'center',
         justifyContent:'center'
     },
@@ -187,7 +194,6 @@ const styles = StyleSheet.create({
             ios:65,
             android:50,
         }),
-        position:'absolute',
         alignSelf:'center',
         justifyContent:'center'
     },
@@ -202,24 +208,13 @@ const styles = StyleSheet.create({
             ios:68,
             android:70,
         }),
-        position:'absolute',
         alignSelf:'center',
         justifyContent:'center'
     },
-    buttonright: {
-        width: '70%',
-        height: '30%',
-        borderRadius: 80,
-        backgroundColor:'rgb(45, 45, 68)',
-        alignSelf:'center',
-        marginBottom:15,
-    },
     textBtn:{
-        width:'100%',
-        height:'10%',
         alignSelf:'center',
-        alignItems:'center',
-        marginBottom:40,        
+        alignItems:'center',    
+        marginBottom:30,
     },
     textBtnformat:{
         fontSize:16,
@@ -227,10 +222,9 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
     },      
     footer:{
+        height:'15%',
         backgroundColor:'white',
-        alignItems:'center',
-        flexDirection:'row',
-        justifyContent:'center'
+        justifyContent:'center',
     },
     loginBtn:{
         width:"90%",
@@ -244,16 +238,4 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight:'bold',
       },
-      buttonBot:{
-        width:'100%',
-        height:'09%',
-        alignItems:'flex-end',
-        justifyContent:'center'
-      },
-      creatorsimg:{
-          width:33,
-          height:40,
-          marginRight:15,
-      }
-
 })
