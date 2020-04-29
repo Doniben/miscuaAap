@@ -12,12 +12,12 @@ import {
 } from 'react-native';
 // import { withTheme } from 'react-native-elements';
 
-export function gpsRequest({ navigation }){
+export function gpsRequest({ navigation, navigation: { goBack } }){
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.gpsGeneralContainer}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => {navigation.navigate('main')}}>
+                    <TouchableOpacity onPress={() => goBack()}>
                         <Image style={styles.leftNavigator}
                             source={require('../assets/img/back-50.png')}
                         />  

@@ -28,15 +28,13 @@ export function map({ navigation }){
                         />  
                     </TouchableOpacity>
                 </View>
-                <View>
-                    <View style={styles.homeContainer}>
-                        <View style={styles.homeArrive}>
-                            <TouchableOpacity onPress={() => navigation.navigate('main')}>
-                                <Image style={styles.rightHomeArrive}
-                                    source={require('../assets/img/here.png')}
-                                />  
-                            </TouchableOpacity>
-                        </View>
+                <View style={styles.homeContainer}>
+                    <View style={styles.homeArrive}>
+                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                            <Image style={styles.rightHomeArrive}
+                                source={require('../assets/img/here.png')}
+                            />  
+                        </TouchableOpacity>
                     </View>
                 </View>
                 <View style={styles.map}>
@@ -64,38 +62,46 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(52, 52, 52, 0.7)',
         width: '100%',
         height: '100%',
+        position: 'relative'
     },
     header: {
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'space-between',
         backgroundColor: 'white',
-        marginTop: Platform.select({
-            ios: 0,
-            android: 15
-        })
+        marginTop: 0,
+        height: '12%',
+        alignItems: 'center',
+        alignContent: 'center'
     },
     miscuaLogo: {
         width: 30,
         height: 35,
-        margin: 20,
+        margin: 25,
         marginLeft: 30,
+        marginTop: Platform.select({
+            android: 45
+        })
     },
     rightInfo: {
         width: 30,
         height: 30,
         marginRight: 30,
-        marginTop: 30,
+        marginTop: Platform.select({
+            android: 25
+        })
     },
     homeContainer: {
         position: 'absolute',
-        alignSelf: 'flex-end'
+        marginTop: 90,
+        right: 0,
+        zIndex: 1
     },
 
     homeArrive: {
         flexDirection: 'row',
-        width: 70,
-        height: 70,
+        width: 60,
+        height: 60,
         alignItems: 'flex-end',
         justifyContent: 'flex-end',
         alignSelf: 'flex-end',
@@ -108,10 +114,10 @@ const styles = StyleSheet.create({
         zIndex: 1
     },
     rightHomeArrive: {
-        margin: 10,
+        margin: 5,
         marginTop: 30,
-        width: 50,
-        height: 50,
+        width: 45,
+        height: 45,
         shadowRadius: 0.6,
         shadowOpacity: 0.3,
         justifyContent: 'center',
@@ -120,6 +126,10 @@ const styles = StyleSheet.create({
     map: {
         height: '100%',
         width: '100%',
+        position: 'relative',
+        marginTop: Platform.select({
+            ios: 20
+        })
     },
     footerView: {
         position: "absolute",
