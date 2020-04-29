@@ -69,172 +69,173 @@ export function activities ({ navigation }){
         statusPress6 ? setStatuspress6(false): setStatuspress6(true);
     }
     return (
-        <SafeAreaView style={styles.safe}>
             <View style={styles.generalContainer}>
-                <View style={styles.header}>
-                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
-                        <Image style={styles.leftNavigation} source={require('../assets/img/back-50.png')}/>  
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
-                        <Image style={styles.rightInfo} source={require('../assets/img/info.png')}/>  
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.titleContainer}>
-                    <Text style={styles.titleView}>SELECCIONA EL MOTIVO{'\n'} DE TU SALIDA</Text>
-                </View>
-                <View style={styles.recomendationsBtn}>
-                    <View style={styles.columnLeft}>
-                        <TouchableOpacity
-                            activeOpacity={1}
-                            style={ 
-                                statusPress1 ?  styles.buttonleftp : styles.buttonleft
-                            }
-                            onPress={()=>{
-                                changeStatus1();
-                                addActivity1(1);
-                            }}>
-                            <Image 
-                                style={styles.btnimgheadeache}
-                                source={require('../assets/img/groceries.png')}
-                                />     
-                        <LinearGradient
-                            style={styles.textBtn}  
-                            colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}
-                        >
-                          <Text style={styles.textBtnformat}>Compra de{'\n'}víveres</Text>
-                        </LinearGradient>
+                <SafeAreaView>
+                    <View style={styles.header}>
+                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                            <Image style={styles.leftNavigation} source={require('../assets/img/back-50.png')}/>  
                         </TouchableOpacity>
-                        <TouchableOpacity
-                            activeOpacity={1}
-                            style={ 
-                                statusPress3 ?  styles.buttonleftp : styles.buttonleft
-                            }
-                            onPress={()=>{
-                                changeStatus3();
-                                addActivity3(3);
-                            }}>
-                            <Image 
-                                style={styles.btnimgheadeache}
-                                source={require('../assets/img/debit-card.png')}
-                                />
-                        <LinearGradient
-                            style={styles.textBtn}  
-                            colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}
-                        >
-                          <Text style={styles.textBtnformat}>Diligencias{'\n'}bancarias</Text>
-                        </LinearGradient>            
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            activeOpacity={1}
-                            style={ 
-                                statusPress5 ?  styles.buttonleftp : styles.buttonleft
-                            }
-                            onPress={()=>{
-                                changeStatus5();
-                                addActivity5(5);
-                            }}>
-                            <Image 
-                                style={styles.btnimgheadeache}
-                                source={require('../assets/img/dog.png')}
-                                />
-                        <LinearGradient
-                            style={styles.textBtn}  
-                            colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}
-                        >
-                        <Text style={styles.textBtnformat}>Paseo a{'\n'}máscota</Text>
-                        </LinearGradient>            
+                        <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
+                            <Image style={styles.rightInfo} source={require('../assets/img/info.png')}/>  
                         </TouchableOpacity>
                     </View>
-                    <View style={styles.columnRight}>
-                    <TouchableOpacity
-                            activeOpacity={1}
-                            style={ 
-                                statusPress2 ?  styles.buttonleftp : styles.buttonleft
-                            }
-                            onPress={()=>{
-                                changeStatus2();
-                                addActivity2(2);
-                            }}>
-                            <Image 
-                                style={styles.btnimgheadeache}
-                                source={require('../assets/img/doctor.png')}
-                                />
-                        <LinearGradient
-                            style={styles.textBtn}  
-                            colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}
-                        >
-                        <Text style={styles.textBtnformat}>Visita{'\n'}médica</Text>
-                        </LinearGradient>            
-                        </TouchableOpacity>                     
-                        <TouchableOpacity
-                            activeOpacity={1}
-                            style={ 
-                                statusPress4 ?  styles.buttonleftp : styles.buttonleft
-                            }
-                            onPress={()=>{
-                                changeStatus4();
-                                addActivity4(4);
-                            }}>
-                            <Image 
-                                style={styles.btnimgheadeache}
-                                source={require('../assets/img/work.png')}
-                                />
-                        <LinearGradient
-                            style={styles.textBtn}  
-                            colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}
-                        >
-                        <Text style={styles.textBtnformat}>Trabajo</Text>
-                        </LinearGradient>
-                        </TouchableOpacity>                                 
-                        <TouchableOpacity
-                            activeOpacity={1}
-                            style={ 
-                                statusPress6 ?  styles.buttonleftp : styles.buttonleft
-                            }
-                            onPress={()=>{
-                                changeStatus6();
-                                addActivity6(6);
-                            }}>
-                            <Image 
-                                style={styles.btnimgheadeache}
-                                source={require('../assets/img/family.png')}
-                            />
-                        <LinearGradient
-                            style={styles.textBtn}  
-                            colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}
-                        >
-                            <Text style={styles.textBtnformat}>Visita{'\n'}familiar</Text>
-                        </LinearGradient>
+                    <View style={styles.titleContainer}>
+                        <Text style={styles.titleView}>SELECCIONA EL MOTIVO{'\n'} DE TU SALIDA</Text>
+                    </View>
+                    <View style={styles.recomendationsBtn}>
+                            <TouchableOpacity
+                                activeOpacity={1}
+                                style={ 
+                                    statusPress1 ?  styles.buttonleftp : styles.buttonleft
+                                }
+                                onPress={()=>{
+                                    changeStatus1();
+                                    addActivity1(1);
+                                }}>
+                                <View style={styles.boximg}>
+                                    <Image 
+                                        style={styles.btnimgheadeache}
+                                        source={require('../assets/img/groceries.png')}
+                                        />
+                                </View>     
+                                <LinearGradient
+                                    style={styles.textBtn}  
+                                    colors={['rgb(51, 225, 237)', 'rgb(51, 225, 237)']}
+                                >
+                                    <Text style={styles.textBtnformat}>Compra de{'\n'}víveres</Text>
+                                </LinearGradient>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                activeOpacity={1}
+                                style={ 
+                                    statusPress2 ?  styles.buttonleftp : styles.buttonleft
+                                }
+                                onPress={()=>{
+                                    changeStatus2();
+                                    addActivity2(2);
+                                }}>
+                                <View style={styles.boximg}>
+                                    <Image 
+                                        style={styles.btnimgheadeache}
+                                        source={require('../assets/img/doctor.png')}
+                                    />
+                                </View>
+                                <LinearGradient
+                                    style={styles.textBtn}  
+                                    colors={['rgb(51, 225, 237)', 'rgb(51, 225, 237)']}
+                                >
+                                    <Text style={styles.textBtnformat}>Visita{'\n'}médica</Text>
+                                </LinearGradient>            
+                            </TouchableOpacity> 
+                            <TouchableOpacity
+                                activeOpacity={1}
+                                style={ 
+                                    statusPress3 ?  styles.buttonleftp : styles.buttonleft
+                                }
+                                onPress={()=>{
+                                    changeStatus3();
+                                    addActivity3(3);
+                                }}>
+                                <View style={styles.boximg}>
+                                    <Image 
+                                        style={styles.btnimgheadeache}
+                                        source={require('../assets/img/debit-card.png')}
+                                    />
+                                </View>
+                                <LinearGradient
+                                    style={styles.textBtn}  
+                                    colors={['rgb(51, 225, 237)', 'rgb(51, 225, 237)']}
+                                >
+                                    <Text style={styles.textBtnformat}>Diligencias{'\n'}bancarias</Text>
+                                </LinearGradient>            
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                activeOpacity={1}
+                                style={ 
+                                    statusPress4 ?  styles.buttonleftp : styles.buttonleft
+                                }
+                                onPress={()=>{
+                                    changeStatus4();
+                                    addActivity4(4);}}>
+                                <View style={styles.boximg}>
+                                    <Image 
+                                        style={styles.btnimgheadeache}
+                                        source={require('../assets/img/work.png')}
+                                    />
+                                </View>
+                                <LinearGradient
+                                    style={styles.textBtn}  
+                                    colors={['rgb(51, 225, 237)', 'rgb(51, 225, 237)']}
+                                >
+                                    <Text style={styles.textBtnformat}>Trabajo</Text>
+                                </LinearGradient>
+                            </TouchableOpacity>  
+                            <TouchableOpacity
+                                activeOpacity={1}
+                                style={ 
+                                    statusPress5 ?  styles.buttonleftp : styles.buttonleft
+                                }
+                                onPress={()=>{
+                                    changeStatus5();
+                                    addActivity5(5);
+                                }}>
+                                <View style={styles.boximg}>
+                                    <Image 
+                                        style={styles.btnimgheadeache}
+                                        source={require('../assets/img/dog.png')}
+                                    />
+                                </View>
+                                <LinearGradient
+                                    style={styles.textBtn}  
+                                    colors={['rgb(51, 225, 237)', 'rgb(51, 225, 237)']}
+                                >
+                                    <Text style={styles.textBtnformat}>Paseo a{'\n'}máscota</Text>
+                                </LinearGradient>            
+                            </TouchableOpacity>                                   
+                            <TouchableOpacity
+                                activeOpacity={1}
+                                style={ 
+                                    statusPress6 ?  styles.buttonleftp : styles.buttonleft
+                                }
+                                onPress={()=>{
+                                    changeStatus6();
+                                    addActivity6(6);}}>
+                                <View style={styles.boximg}>
+                                    <Image 
+                                        style={styles.btnimgheadeache}
+                                        source={require('../assets/img/family.png')}
+                                    />
+                                </View>
+                                <LinearGradient
+                                    style={styles.textBtn}  
+                                    colors={['rgb(51, 225, 237)', 'rgb(51, 225, 237)']}
+                                >
+                                    <Text style={styles.textBtnformat}>Visita{'\n'}familiar</Text>
+                                </LinearGradient>
+                            </TouchableOpacity>
+                    </View>
+                    <View style={styles.footer}>
+                        <TouchableOpacity style={styles.loginBtn} onPress={()=>{sendData()}}>
+                            <LinearGradient
+                                style={styles.loginBtn}  
+                                colors={['rgb(51, 225, 237)', 'rgb(51, 225, 237)']}
+                            >
+                                <Text style={styles.loginText}>OK</Text>
+                            </LinearGradient>
                         </TouchableOpacity>
                     </View>
-                </View>
-                <View style={styles.footer}>
-                <TouchableOpacity style={styles.loginBtn} onPress={()=>{sendData()}}>
-                    <LinearGradient
-                        style={styles.loginBtn}  
-                        colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}
-                    >
-                        <Text style={styles.loginText}>OK</Text>
-                    </LinearGradient>
-                </TouchableOpacity>
-                </View>
-                <View style={styles.buttonBot}><Image style={styles.creatorsimg} source={require('../assets/img/logo.png')}/></View>
+                </SafeAreaView>
             </View>
-        </SafeAreaView>
+            
     )
 };
 const styles = StyleSheet.create({
-    safe: {
-        backgroundColor: 'white',
-    },
     generalContainer:{
-        width: '100%',
-        height: '100%',
+        flex:1,
         backgroundColor: 'white',
     },
     header: {
         flexDirection: 'row',
-        width: '100%',
         height:'12%',
         justifyContent: 'space-between',
         backgroundColor:'white',
@@ -245,7 +246,6 @@ const styles = StyleSheet.create({
         alignSelf:'flex-start',
         marginLeft:30,
         marginTop:30,
-
     },
     rightInfo: {
         width: 30,
@@ -255,154 +255,78 @@ const styles = StyleSheet.create({
         alignSelf:'flex-end',
     },
     titleContainer:{
-        width:'70%',
-        alignItems:'center',
-        justifyContent:'center',
-        alignSelf:'center',
-        marginBottom:25,
+        height:'8%',
     },
     titleView:{
-        width:'100%',
         textAlign:'center',
         fontSize:18,
         fontWeight:'bold',
     },
-    subtitleContainer:{
-        width:'70%',
-        height:40,
-        alignSelf:'center',
+    recomendationsBtn: {
+        height:'60%',
+        flexDirection:'row',
+        flexWrap:'wrap',
         justifyContent:'center',
     },
-    subtitletxt:{
-        textAlign:'center',
-        fontWeight:'bold',
-        color:'rgb(112, 112, 112)',
-        fontSize:16,
-    },
-    recomendationsBtn: {
-        width:'90%',
-        height:'60%',
-        alignSelf:'center',
-        marginBottom:5,
-        alignContent:'flex-start'
-    },
-    columnLeft:{
-        width:'50%',
-        height:'100%',
-        alignSelf:'flex-start',
-    },
-    columnRight:{
-        width:'50%',
-        height:'100%',
-        alignSelf:'flex-end',
-        position:'absolute',
-    },
     buttonleft: {
-        width: Platform.select({
-            ios:'70%',
-            android:'70%'
-        }),
-        height: Platform.select({
-            ios:'30%',
-            android:'30%',
-        }),
+        height:'28%',
+        width:'33%',
         borderRadius:25,
         alignSelf:'center',
-        marginBottom:10,
+        marginBottom:20,
+        marginRight:25,
+        marginLeft:25,
         overflow:'hidden',
-        paddingTop:6
     },
     buttonleftp: {
-        width: Platform.select({
-            ios:'70%',
-            android:'70%'
-        }),
-        height: Platform.select({
-            ios:'30%',
-            android:'30%',
-        }),
-        borderRadius:25,
-        borderColor:'rgb(79, 204, 214)',
-        borderWidth:3,
-        alignSelf:'center',
-        marginBottom:10,
-        overflow:'hidden',
-        paddingTop:3,
-    },
-    buttonright: {
-        width: Platform.select({
-            ios:'75%',
-            android:'43%'
-        }),
-        height: Platform.select({
-            ios:'32%',
-            android:'19%',
-        }),
+        height:'28%',
+        width:'33%',
         borderRadius:25,
         borderWidth:3,
+        borderColor:'rgb(51, 225, 237)',
         alignSelf:'center',
-        justifyContent:'flex-start',
-        marginBottom:30,
         overflow:'hidden',
+        marginRight:25,
+        marginLeft:25,
+        marginBottom:20,
     },
-    textBtn:{
-        width:'100%',
-        height: Platform.select({
-            ios: '34%',
-            android: '40%',
-        }),
+    boximg:{
+        height:'65%',
+        width:'65%',
         alignSelf:'center',
-        borderRadius: 2,
-        marginTop:Platform.select({
-            ios:'67%',
-            android:'60%',
-        }),
-        position:'absolute',
         justifyContent:'center'
+    },
+    btnimgheadeache:{
+        width: 65,
+        height: 65,
+        alignSelf:'center',
+    },  
+    textBtn:{
+        height:'35%',
+        width:'100%',
+        justifyContent:'center',
+        borderRadius: 10,
     },
     textBtnformat:{
         fontSize:14,
         textAlign:'center',
         color:'white',
-    },  
-    btnimgheadeache:{
-        width: Platform.select({
-            ios: 65,
-            android:55
-        }),
-        height: Platform.select({
-            ios:65,
-            android:55,
-        }),
-        alignSelf:'center',
     },    
     footer:{
+        height:'20%',
         backgroundColor:'white',
-        alignItems:'center',
-        flexDirection:'row',
         justifyContent:'center',
     },
     loginBtn:{
+        height:'50%',
         width:"60%",
-        borderRadius: 15,
-        height:35,
+        borderRadius: 12,
         alignItems:"center",
-        justifyContent:"center",
-        alignSelf: 'center'
+        alignSelf: 'center',
+        justifyContent:'center'
       },
       loginText: {
         color: 'white',
         fontWeight:'bold',
       },
-      buttonBot:{
-        width:'100%',
-        height:'09%',
-        alignItems:'flex-end',
-        justifyContent:'center',
-      },
-      creatorsimg:{
-        width:33,
-        height:40,
-        marginRight:15,
-    }
 })
