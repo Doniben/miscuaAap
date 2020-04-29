@@ -13,6 +13,14 @@ import {
 // import { withTheme } from 'react-native-elements';
 
 export function analyzingContagion({ navigation }){
+    const next = () =>{
+        setTimeout(() => {
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'symptoms' }],
+              });
+            }, 5000);
+    }
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.Container}>
@@ -25,6 +33,7 @@ export function analyzingContagion({ navigation }){
                     <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
                         <Image style={styles.rightInfo}
                             source={require('../assets/img/info.png')}
+                            onLoad={next()}
                         />  
                     </TouchableOpacity>
                 </View>
