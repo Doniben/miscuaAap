@@ -15,23 +15,22 @@ import {
 export function map({ navigation }){
     return (
         <SafeAreaView style={styles.safeArea}>
-            <View style={styles.header}>
-                        <TouchableOpacity>
-                            <Image style={styles.miscuaLogo}
-                                source={require('../assets/img/logo.png')}
-                            />  
-                        </TouchableOpacity>
-
+            <View style={styles.mapContainerGeneral}>
+                <View style={styles.header}>
+                    <TouchableOpacity>
+                        <Image style={styles.miscuaLogo}
+                            source={require('../assets/img/logo.png')}
+                        />  
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
                         <Image style={styles.rightInfo}
                             source={require('../assets/img/info.png')}
                         />  
                     </TouchableOpacity>
-            <View style={styles.mapContainerGeneral}>
                 </View>
                 <View style={styles.homeContainer}>
                     <View style={styles.homeArrive}>
-                        <TouchableOpacity onPress={() => navigation.push('main')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
                             <Image style={styles.rightHomeArrive}
                                 source={require('../assets/img/here.png')}
                             />  
