@@ -25,7 +25,7 @@ export function register({ navigation, navigation: { goBack } }){
     const [enteredPassword, setEnteredPassword] = useState('');
     const [checked, setChecked] = useState(false);
     
-    const url = "https://miscua.com/terminos-y-condiciones.html";
+    const url = "https://miscua.com/terminos-y-condiciones";
 
     const terms = useCallback(async () => {
             await Linking.openURL(url);
