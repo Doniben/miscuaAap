@@ -29,17 +29,18 @@ export function map({ navigation }){
                     </TouchableOpacity>
             <View style={styles.mapContainerGeneral}>
                 </View>
-                <Maps />
-                <View style={styles.rightHomeArrive}>
+                <View style={styles.homeContainer}>
                     <View style={styles.homeArrive}>
                         <TouchableOpacity onPress={() => navigation.push('main')}>
                             <Image style={styles.rightHomeArrive}
                                 source={require('../assets/img/here.png')}
                             />  
                         </TouchableOpacity>
+                    </View>
                 </View>
+                <View style={styles.map}>
+                    <Maps />
                 </View>
-
                 <View style={styles.footerView}>
                     <TouchableOpacity onPress={() => navigation.navigate('mapOptions')}>
                         <Image
@@ -62,23 +63,46 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(52, 52, 52, 0.7)',
         width: '100%',
         height: '100%',
-        position: "relative",
+        position: 'relative'
     },
     header: {
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'space-between',
         backgroundColor: 'white',
+        marginTop: 0,
+        height: '12%',
+        alignItems: 'center',
+        alignContent: 'center'
+    },
+    miscuaLogo: {
+        width: 30,
+        height: 35,
+        margin: 25,
+        marginLeft: 30,
         marginTop: Platform.select({
-            ios: 0,
-            android: 15
+            android: 45
         })
+    },
+    rightInfo: {
+        width: 30,
+        height: 30,
+        marginRight: 30,
+        marginTop: Platform.select({
+            android: 25
+        })
+    },
+    homeContainer: {
+        position: 'absolute',
+        marginTop: 90,
+        right: 0,
+        zIndex: 1
     },
 
     homeArrive: {
         flexDirection: 'row',
-        width: 70,
-        height: 70,
+        width: 60,
+        height: 60,
         alignItems: 'flex-end',
         justifyContent: 'flex-end',
         alignSelf: 'flex-end',
@@ -88,31 +112,26 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         shadowRadius: 0.4,
         shadowOpacity: 0.4,
+        zIndex: 1
     },
     rightHomeArrive: {
-        margin: 10,
+        margin: 5,
         marginTop: 30,
-        width: 50,
-        height: 50,
+        width: 45,
+        height: 45,
         shadowRadius: 0.6,
         shadowOpacity: 0.3,
         justifyContent: 'center',
-        alignSelf: 'center'
-
+        alignSelf: 'center',
     },
-    miscuaLogo: {
-        width: 30,
-        height: 35,
-        margin: 20,
-        marginLeft: 30,
+    map: {
+        height: '100%',
+        width: '100%',
+        position: 'relative',
+        marginTop: Platform.select({
+            ios: 20
+        })
     },
-    rightInfo: {
-        width: 30,
-        height: 30,
-        marginRight: 30,
-        marginTop: 30,
-    },
-
     footerView: {
         position: "absolute",
         justifyContent: 'flex-end',
