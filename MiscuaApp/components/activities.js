@@ -25,10 +25,11 @@ export function activities ({ navigation }){
             Alert.alert('Ups', 'Por favor indica el motivo de tu salida.');
         }
         else {
+            console.log(listActivities);
             navigation.reset({
                 index: 0,
-                routes: [{ name: 'recomendations' }],});
-            console.log(listActivities);
+                routes: [{ name: 'recomendations' }],
+            });
             }
     }
     const addActivity1 = (a) => {
@@ -72,7 +73,10 @@ export function activities ({ navigation }){
             <View style={styles.generalContainer}>
                 <SafeAreaView>
                     <View style={styles.header}>
-                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                        <TouchableOpacity onPress={() => {navigation.reset({
+                                                                            index: 0,
+                                                                            routes: [{ name: 'main' }],
+                                                                        });}}>
                             <Image style={styles.leftNavigation} source={require('../assets/img/back-50.png')}/>  
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
