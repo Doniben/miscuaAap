@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { AuthContext } from "../context";
 
 import {
     Text,
@@ -20,7 +20,7 @@ import  axios  from 'axios';
 import {AsyncStorage} from 'react-native';
 
 export function LoginMiscua({ navigation }){
-   
+    const { signIn } = React.useContext(AuthContext);
     const [enteredPhone, setEnteredPhone] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
 
@@ -84,13 +84,9 @@ export function LoginMiscua({ navigation }){
                                 }
                                 _storeData();
                                 _retrieveData();
-                                Alert.alert('Inicio de sesion exitoso');
                                 setEnteredPhone('');
                                 setEnteredPassword('');
-                                navigation.reset({
-                                    index: 0,
-                                    routes: [{ name: 'howto' }],
-                                  });
+                                signIn(tokenUser);
 
                             } else {
                                 Alert.alert('Usuario o Password incorrectos');
@@ -169,10 +165,7 @@ export function LoginMiscua({ navigation }){
                         <TouchableOpacity onPress={() => navigation.navigate('passwordRequest')}>
                             <Text style={styles.forgot}>Olvidé mi contraseña</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.registerText} onPress={() =>
-                            navigation.reset({
-                                    index: 0,
-                                    routes: [{ name: 'register' }],})}>
+                        <TouchableOpacity style={styles.registerText} onPress={() => navigation.navigate('register')}>
                             <Text><Text style={styles.registerTextWithout}>No tengo cuenta,  </Text><Text style={styles.registerLink}>REGISTRARME</Text></Text>
                         </TouchableOpacity>
                     </View>
