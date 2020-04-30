@@ -244,8 +244,12 @@ export function symptoms ({ navigation }){
                     </View>
                 </View>
                 <View style={styles.footer}>
-                <TouchableOpacity style={styles.loginBtn} onPress={()=>{console.log(listSymptoms)
-                navigation.navigate('main')}}>
+                <TouchableOpacity style={styles.loginBtn} onPress={()=>{
+                        console.log(listSymptoms);
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'main' }],
+                            });}}>
                     <LinearGradient
                         style={styles.loginBtn}  
                         colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}
