@@ -13,6 +13,7 @@ import { symptoms } from './components/symptoms';
 import { positiveConfirmation } from './components/positiveConfirmation';
 import { gpsRequest } from './components/gpsRequest';
 import { mapOptions } from './components/mapOptions';
+import { creators } from './components/creators';
 import { map } from './components/map';
 import { register } from './components/register';
 import { AuthContext } from "./context";
