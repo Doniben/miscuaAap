@@ -11,16 +11,16 @@ import {
     Text
 } from 'react-native';
 // import { withTheme } from 'react-native-elements';
-
+// this is the back button image, but for is better disabled <Image style={styles.leftNavigator}
+                        //    source={require('../assets/img/back-50.png')}
+                        ///> 
 export function gpsRequest({ navigation }){
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.gpsGeneralContainer}>
                 <View style={styles.header}>
                     <TouchableOpacity onPress={() => {navigation.navigate('main')}}>
-                        <Image style={styles.leftNavigator}
-                            source={require('../assets/img/back-50.png')}
-                        />  
+                          
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
                         <Image style={styles.rightInfo}
