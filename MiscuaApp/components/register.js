@@ -217,7 +217,7 @@ export function register({ navigation, navigation: { goBack } }){
                                 <Text style={styles.registerTextWithout}>Entre todos saldremos de esta situación</Text>
                             </View>
                             <TouchableOpacity>
-                                <Text style={styles.backLogin} onPress={()=> navigation.navigate('LoginMiscua')}>Regresar</Text>
+                                <Text style={styles.backLogin} onPress={()=> {goBack();}}>Regresar</Text>
                             </TouchableOpacity>
                         </View>
                     </ScrollView>
