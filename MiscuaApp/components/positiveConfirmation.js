@@ -43,11 +43,7 @@ export function positiveConfirmation({ navigation, navigation: { goBack } }){
                         </Text>
                     </View>
                     <View>
-                        <TouchableOpacity style={styles.buttonYes} onPress={()=>                                 
-                            navigation.reset({
-                                    index: 0,
-                                    routes: [{ name: 'confirmationScreen' }],
-                                  })}>
+                        <TouchableOpacity style={styles.buttonYes} onPress={()=>navigation.navigate('confirmationScreen')}>
                             <Text style={styles.textButton}>
                                 SÍ
                             </Text>
