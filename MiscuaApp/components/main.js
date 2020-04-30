@@ -19,7 +19,7 @@ export function main({ navigation, navigation: { goBack} }){
                 <View style={styles.header}>
                         <TouchableOpacity onPress={()=> signOut()}>
                             <Image style={styles.leftNavigation}
-                                source={require('../assets/img/back-50.png')}
+                                source={require('../assets/img/signout.png')}
                             />  
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
@@ -104,15 +104,13 @@ const styles = StyleSheet.create({
         })
     },
     leftNavigation: {
-        width: 10,
+        width: 30,
         height: 30,
         margin: 30,
-        marginLeft: 30,
     },
     rightInfo: {
         width: 30,
         height: 30,
-        marginRight: 30,
         margin: 30,
     },
 
