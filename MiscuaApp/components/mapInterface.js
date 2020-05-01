@@ -11,7 +11,7 @@ export default class Maps extends React.Component {
   state = {
     latitude: null,
     longitude: null,
-    locations: [],
+    positions: [],
   }
 
   async componentDidMount() {
@@ -22,16 +22,22 @@ export default class Maps extends React.Component {
 
     location = await Location.getCurrentPositionAsync({});
     const place = await showMarkers()
+   // console.log('y los lugares son:', place.places)
+    console.log('los locations son', location)
+    if (place === null){
+      place = []
+    }
     this.setState({
       latitude: location.coords['latitude'],
       longitude: location.coords['longitude'],
-      locations: place.places
+      positions: place.places
+      
     })
-
+    console.log('positions', this.state.positions)
   }
-
+  
   render() {
-    const { latitude, longitude } = this.state
+    const { latitude, longitude, positions } = this.state
     if (latitude) {
       return (
         <View style={styles.container}>
@@ -43,6 +49,21 @@ export default class Maps extends React.Component {
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421,
             }}>
+            { positions.map( (marker, idx) => {
+              const markPos = {
+                latitude: marker.coor[0],
+                longitude: marker.coor[1]
+              };
+              return (
+                <Marker
+                  key = { idx }
+                  coordinate= { markPos }
+                  title = { marker.data.title }
+                />
+              )
+            }
+
+            )}
           </MapView>
         </View>
       );
