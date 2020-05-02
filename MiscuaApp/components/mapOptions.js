@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { LinearGradient } from 'expo-linear-gradient'
+import { location } from './mapInterface'
+import { createMarker } from './apiRequest'
 
 
 import {
@@ -35,7 +37,10 @@ export function mapOptions({ navigation }){
                         </Text>
                     </View>
                     <View style={styles.buttons}>
-                        <TouchableOpacity style={styles.buttonYes} onPress={() => {navigation.navigate('main')}}>
+                        <TouchableOpacity style={styles.buttonYes} onPress={() => {
+                            createMarker('AGLOMERACION DE PERSONAS')
+                            navigation.navigate('map')
+                            }}>
                             <LinearGradient style={styles.loginBtn}  colors={['rgb(11, 191, 214)', 'rgb(90, 204, 193)']}>
                                 <Text style={styles.textButton}>
                                     AGLOMERACIÓN DE PERSONAS

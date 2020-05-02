@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Permissions } from 'expo-permissions'
 
 import {
     Text,
@@ -12,67 +13,70 @@ import {
 import { Audio } from 'expo-av';
 
 
-export function confirmationScreen ({ navigation, navigation: { goBack } }) {
-        async function coffin () {    
+export function confirmationScreen({ navigation, navigation: { goBack } }) {
+    async function coffin() {
         await Audio.Sound.createAsync(
-                require('../assets/coffinSong.mp3'),
-                { shouldPlay: true }
-            );
-        }
-        coffin();
-        return (
-            <SafeAreaView style={styles.safeArea}>
-                <View style={styles.Container}>
-                    <View style={styles.header}>
-                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
-                            <Image style={styles.leftNavigation}
-                                source={require('../assets/img/back-50.png')}
-                            />  
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
-                            <Image style={styles.rightInfo}
-                                source={require('../assets/img/info.png')}
-                            />  
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.confirmationContainer}>
-                        <View>
-                            <Text style={styles.tittleHelp}>
-                                TE AYUDAREMOS
+            require('../assets/coffinSong.mp3'),
+            { shouldPlay: true }
+        );
+    }
+    coffin();
+    return (
+        <SafeAreaView style={styles.safeArea}>
+            <View style={styles.Container}>
+                <View style={styles.header}>
+                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                        <Image style={styles.leftNavigation}
+                            source={require('../assets/img/back-50.png')}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
+                        <Image style={styles.rightInfo}
+                            source={require('../assets/img/info.png')}
+                        />
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.confirmationContainer}>
+                    <View>
+                        <Text style={styles.tittleHelp}>
+                            TE AYUDAREMOS
                             </Text>
-                        </View>
-                        <View>
-                            <Text style={styles.description}>
-                            Nos hemos contactado con los organismos de salud que pueden 
-                            ayudar a agilizar tu atención, así podremos definir tu estado 
-                            y entre todos poder salir de la mejor manera de esta situación 
+                    </View>
+                    <View>
+                        <Text style={styles.description}>
+                            Nos hemos contactado con los organismos de salud que pueden
+                            ayudar a agilizar tu atención, así podremos definir tu estado
+                            y entre todos poder salir de la mejor manera de esta situación
                             que nos importa a todos.
                             </Text>
-                        </View>
-                        <View>
+                    </View>
+                    <View>
                         <View>
                             <Image
                                 style={styles.logo}
-                                source={require('../assets/img/tenor.gif')}/>
-                            </View>
-                            <View style={styles.tittle}>
-                                <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
-                            </View>
+                                source={require('../assets/img/tenor.gif')} />
+                        </View>
+                        <View style={styles.tittle}>
+                            <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
                         </View>
                     </View>
-                    <View style={styles.footerView}>
-                        <TouchableOpacity onPress={() => navigation.navigate('creators')}>
-                            <Image
+                </View>
+                <View style={styles.footerView}>
+                    <TouchableOpacity onPress={async () => {
+                        navigation.navigate('creators')
+                    }
+                    }>
+                        <Image
                             style={styles.creatorsButton}
                             source={require('../assets/img/logo.png')}
-                            />
-                        </TouchableOpacity>
-                    </View>
+                        />
+                    </TouchableOpacity>
                 </View>
-            </SafeAreaView>
+            </View>
+        </SafeAreaView>
 
-        )
-    }
+    )
+}
 
 const styles = StyleSheet.create({
     safeArea: {
@@ -80,8 +84,8 @@ const styles = StyleSheet.create({
     },
     Container: {
         backgroundColor: 'rgb(45, 45, 68)',
-        width:'100%',
-        height:'100%',
+        width: '100%',
+        height: '100%',
     },
     header: {
         flexDirection: 'row',
@@ -146,8 +150,8 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     logo: {
-        width: 260, 
-        height: 180, 
+        width: 260,
+        height: 180,
         padding: 10,
         paddingBottom: 0,
         resizeMode: 'contain',
@@ -172,5 +176,5 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         textAlign: 'center',
     },
-        
+
 })
