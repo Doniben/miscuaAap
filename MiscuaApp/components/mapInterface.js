@@ -8,7 +8,7 @@ import { showMarkers } from './apiRequest'
 export let location = async () => await Location.getCurrentPositionAsync({});
 
 export default class Maps extends React.Component {
-  state = {
+   state = {
     latitude: null,
     longitude: null,
     positions: [],
@@ -24,13 +24,14 @@ export default class Maps extends React.Component {
     const place = await showMarkers()
    // console.log('y los lugares son:', place.places)
     console.log('los locations son', location)
-    if (place === null){
-      place = []
-    }
+    // if (place === null){
+    //   place.places = []
+    // }
+    console.log('los places son:', place.places)
     this.setState({
       latitude: location.coords['latitude'],
       longitude: location.coords['longitude'],
-      positions: place.places
+      positions: place.places,
       
     })
     console.log('positions', this.state.positions)
@@ -46,8 +47,8 @@ export default class Maps extends React.Component {
             initialRegion={{
               latitude,
               longitude,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
+              latitudeDelta: 0.045,
+              longitudeDelta: 0.045,
             }}>
             { positions.map( (marker, idx) => {
               const markPos = {

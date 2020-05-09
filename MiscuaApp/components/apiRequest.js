@@ -45,12 +45,13 @@ export function createMarker (title) {
 
 }
 
-export async function showMarkers() {
+export  async function showMarkers() {
     try {
-        await _restoreToken();
+         await _restoreToken();
         let lat = location.coords['latitude'];
         let lon = location.coords['longitude'];
         const url = `${HOST}` +  `rest/v1/place/?lat=${lat}&lon=${lon}&accuracy=1000`
+        console.log('la direccion', url)
         const showMark = axios({
             method: "GET",
             url,
@@ -60,6 +61,10 @@ export async function showMarkers() {
         })
         .then(function (response) {
             if (response.status === 200) {
+                if (response.data.places === null){
+                    response.data.places = []
+                }
+               console.log('el response.data', response.data.places)
                 return response.data;
             }
         })
@@ -67,8 +72,9 @@ export async function showMarkers() {
             console.log('eror', err);
             return err;
         });
+        //console.log('los markers', showMark)
         return showMark;
-    } catch (error) {
-      console.error(error);
+     } catch (error) {
+       console.error(error);
     }
-}
+ }
