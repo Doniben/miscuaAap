@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AuthContext } from "../context";
 
 import {
     Image,
@@ -11,13 +12,14 @@ import {
 } from 'react-native';
 
 export function main({ navigation, navigation: { goBack} }){
+    const { signOut } = React.useContext(AuthContext);
     return (
         <SafeAreaView style={styles.safeContainer}>                
             <View style={styles.mainContainer}>
                 <View style={styles.header}>
-                        <TouchableOpacity onPress={()=> goBack()}>
+                        <TouchableOpacity onPress={()=> signOut()}>
                             <Image style={styles.leftNavigation}
-                                source={require('../assets/img/back-50.png')}
+                                source={require('../assets/img/signout.png')}
                             />  
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
@@ -102,15 +104,13 @@ const styles = StyleSheet.create({
         })
     },
     leftNavigation: {
-        width: 10,
+        width: 30,
         height: 30,
         margin: 30,
-        marginLeft: 30,
     },
     rightInfo: {
         width: 30,
         height: 30,
-        marginRight: 30,
         margin: 30,
     },
 

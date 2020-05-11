@@ -45,7 +45,11 @@ export function howto({ navigation }) {
                                 IMFORMACIÓN
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('main')}>
+                        <TouchableOpacity style={styles.button} onPress={() => {
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'main' }],
+                            });}}>
                             <Text style={styles.textButton}>
                                 SALTAR
                             </Text>

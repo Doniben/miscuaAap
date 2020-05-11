@@ -81,7 +81,11 @@ export function recomendations ({ navigation, navigation: { goBack } }){
                         </View>     
                     </View>
                     <View style={styles.footer}>
-                        <TouchableOpacity style={styles.loginBtn} onPress={() => { navigation.navigate('gpsRequest') }}>
+                        <TouchableOpacity style={styles.loginBtn} onPress={() => {
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'gpsRequest' }],
+                            });}}>
                             <LinearGradient style={styles.loginBtn}  colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}>
                                 <Text style={styles.loginText}>HECHO</Text>
                             </LinearGradient>

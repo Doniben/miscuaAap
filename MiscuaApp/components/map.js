@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
         width: '100%',
         position: 'relative',
         marginTop: Platform.select({
-            ios: 20
+            ios: 10
         })
     },
     footerView: {

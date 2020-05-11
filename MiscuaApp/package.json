@@ -20,18 +20,19 @@
     "@react-navigation/stack": "^5.0.0",
     "@react-navigation/web": "~1.0.0-alpha.9",
     "axios": "^0.19.2",
-    "expo": "^37.0.7",
+    "expo": "^37.0.8",
     "expo-asset": "~8.1.3",
     "expo-av": "~8.1.0",
     "expo-constants": "~9.0.0",
     "expo-font": "~8.1.0",
     "expo-location": "~8.1.0",
     "expo-permissions": "~8.1.0",
-    "expo-web-browser": "~8.1.0",
+    "expo-web-browser": "~8.2.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
     "react-native-elements": "^1.2.7",
+    "react-native-emoji": "^1.8.0",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-indicators": "^0.17.0",
     "react-native-maps": "0.26.1",
@@ -47,5 +48,21 @@
     "babel-preset-expo": "~8.1.0",
     "jest-expo": "~37.0.0"
   },
-  "private": true
+  "private": true,
+  "name": "miscuaapp",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Doniben/miscuaApp.git"
+  },
+  "keywords": [
+    "MiscuaApp"
+  ],
+  "author": "Doniben-Daniel-Yesid-Sebastian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Doniben/miscuaApp/issues"
+  },
+  "homepage": "https://github.com/Doniben/miscuaApp#readme",
+  "description": ""
 }

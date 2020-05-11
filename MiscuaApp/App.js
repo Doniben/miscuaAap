@@ -1,164 +1,127 @@
-import 'react-native-gesture-handler';
-import * as React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { NavigationContainer, useLinking } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { atentionLines } from './components/atentionLines';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { LoginMiscua } from './components/LoginMiscua';
-import { register } from './components/register';
 import { howto } from './components/howto';
 import { main } from './components/main';
-import { creators } from './components/creators';
-import { gpsRequest } from './components/gpsRequest'
-import { confirmationScreen } from './components/confirmationScreen';
-import { positiveConfirmation } from './components/positiveConfirmation';
-import { analyzingContagion } from './components/analyzingContagion';
-import { recomendations } from './components/recomendations';
-import { SplashScreen } from 'expo';
-import { mapOptions } from './components/mapOptions';
-import DotSpinner from './components/loadingSpinners/dotSpinner'
-import { map } from './components/map';
-import { symptoms } from './components/symptoms';
 import { activities } from './components/activities';
+import { analyzingContagion } from './components/analyzingContagion';
+import { atentionLines } from './components/atentionLines';
+import { confirmationScreen } from './components/confirmationScreen';
+import { recomendations } from './components/recomendations';
+import { symptoms } from './components/symptoms';
+import { positiveConfirmation } from './components/positiveConfirmation';
+import { gpsRequest } from './components/gpsRequest';
+import { mapOptions } from './components/mapOptions';
+import { creators } from './components/creators';
+import { map } from './components/map';
+import { register } from './components/register';
+import { AuthContext } from "./context";
 import { passwordRequest } from './components/passwordRequest';
+import {
+  Splash
+} from "./Screens";
+
+const AuthStack = createStackNavigator();
+const AuthStackScreen = () => (
+  <AuthStack.Navigator>
+    <AuthStack.Screen
+      name="LoginMiscua"
+      component={ LoginMiscua }
+      options={{ headerShown: false }}
+    />
+    <AuthStack.Screen
+      name="register"
+      component={ register }
+      options={{ headerShown: false }}
+    />
+    <AuthStack.Screen
+      name="passwordRequest"
+      component={ passwordRequest }
+      options={{ headerShown: false }}
+    />
+  </AuthStack.Navigator>
+);
 
 
-const Stack = createStackNavigator();
+const AppStack = createStackNavigator();
+const AppStackScreen = () => (
+  <AppStack.Navigator initialRouteName="howto">
+    <AppStack.Screen name="howto" component={ howto } options={{ headerShown: false, headerLeft: null }} />
+    <AppStack.Screen name="main" component={ main } options={{ headerShown: false, headerLeft: null }}/>
+    <AppStack.Screen name="recomendations" component={ recomendations } options={{ headerShown: false, headerLeft: null }}/>
+    <AppStack.Screen name="analyzingContagion" component={ analyzingContagion } options={{ headerShown: false, headerLeft: null }} />
+    <AppStack.Screen name="atentionLines" component={ atentionLines } options={{ headerShown: false }}/>
+    <AppStack.Screen name="confirmationScreen" component={confirmationScreen} options={{ headerShown: false }}/>
+    <AppStack.Screen name="symptoms" component={ symptoms } options={{ headerShown: false }}/>
+    <AppStack.Screen name="positiveConfirmation" component={positiveConfirmation } options={{ headerShown: false }}/>
+    <AppStack.Screen name="gpsRequest" component={ gpsRequest } options={{ headerShown: false }}/>
+    <AppStack.Screen name="mapOptions" component={ mapOptions } options={{ headerShown: false }}/>
+    <AppStack.Screen name="map" component={ map } options={{ headerShown: false }}/>
+    <AppStack.Screen name="activities" component={ activities } options={{ headerShown: false }}/>
+    <AppStack.Screen name="creators" component={ creators } options={{ headerShown: false }}/>
+  </AppStack.Navigator>
+);
 
-export default function MyStack(props) {
-  const [isLoadingComplete, setLoadingComplete] = React.useState(false);
-  const [initialNavigationState, setInitialNavigationState] = React.useState();
-  const containerRef = React.useRef();
-  const { getInitialState } = useLinking(containerRef, {
-    prefixes: ['https://miscua.com', 'miscua://'],
-    config: {
-      Chat: 'feed/:sort',
-    },
-  });
+const RootStack = createStackNavigator();
+const RootStackScreen = ({ userToken }) => (
+  <RootStack.Navigator headerMode="none">
+    {userToken ? (
+      <RootStack.Screen
+        name="App"
+        component={AppStackScreen}
+        options={{
+          animationEnabled: false
+        }}
+      />
+    ) : (
+      <RootStack.Screen
+        name="Auth"
+        component={AuthStackScreen}
+        options={{
+          animationEnabled: true
+        }}
+      />
+    )}
+  </RootStack.Navigator>
+);
 
-  // Load any resources or data that we need prior to rendering the app                   
-  React.useEffect(() => {
-    async function loadResourcesAndDataAsync() {
-      try {
-        SplashScreen.preventAutoHide();
+export default () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [userToken, setUserToken] = React.useState(null);
 
-        // Load our initial navigation state                                              
-        setInitialNavigationState(await getInitialState());
-        <DotSpinner />
-        // Load fonts                                                                     
-      } catch (e) {
-        // We might want to provide this error information to an error reporting service  
-        console.warn(e);
-      } finally {
-        setLoadingComplete(true);
-        SplashScreen.hide();
+  const authContext = React.useMemo(() => {
+    return {
+      signIn: (value) => {
+        setIsLoading(false);
+        setUserToken(value);
+      },
+      signUp: () => {
+        setIsLoading(false);
+        setUserToken(value);
+      },
+      signOut: () => {
+        setIsLoading(false);
+        setUserToken(null);
       }
-    }
-
-    loadResourcesAndDataAsync();
+    };
   }, []);
 
-  if (!isLoadingComplete && !props.skipLoadingScreen) {
-    return null;
-  } else {
-      return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
-            <Stack.Navigator>
-            
-              <Stack.Screen 
-                name="LoginMiscua"
-                component={ LoginMiscua } 
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen 
-                name="register"
-                component={ register } 
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen 
-                name="passwordRequest"
-                component={ passwordRequest } 
-                options={{ headerShown: false }}
-              />
+  React.useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+  }, []);
 
-              <Stack.Screen 
-                name="symptoms"
-                component={ symptoms } 
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen 
-                name="activities"
-                component={ activities } 
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="howto"
-                component={ howto }
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="main"
-                component={ main }
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen 
-                name="positiveConfirmation" 
-                component={ positiveConfirmation } 
-                options={{ headerShown: false }}
-              /> 
-              <Stack.Screen 
-                name="creators" 
-                component={ creators } 
-                options={{ headerShown: false }}
-              /> 
-              <Stack.Screen 
-                name="atentionLines" 
-                component={ atentionLines } 
-                options={{ headerShown: false }}
-              /> 
-              <Stack.Screen 
-                name="confirmationScreen" 
-                component={ confirmationScreen } 
-                options={{ headerShown: false }}
-              /> 
-              <Stack.Screen 
-                name="analyzingContagion" 
-                component={ analyzingContagion } 
-                options={{ headerShown: false }}
-              /> 
-              <Stack.Screen 
-                name="recomendations" 
-                component={ recomendations } 
-                options={{ headerShown: false }}
-              /> 
-              <Stack.Screen 
-                name="gpsRequest" 
-                component={ gpsRequest } 
-                options={{ headerShown: false }}
-              /> 
-              <Stack.Screen 
-                name="mapOptions" 
-                component={ mapOptions } 
-                options={{ headerShown: false }}
-              /> 
-              <Stack.Screen
-                name="map"
-                component={ map }
-                options={{ headerShown: false }}
-              />
-              
-            </Stack.Navigator>
-          </NavigationContainer>
-        </View>
-    );
+  if (isLoading) {
+    return <Splash />;
   }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'rgb(45, 45, 68)',
-  },
-})
+  return (
+    <AuthContext.Provider value={authContext}>
+      <NavigationContainer>
+        <RootStackScreen userToken={userToken} />
+      </NavigationContainer>
+    </AuthContext.Provider>
+  );
+};

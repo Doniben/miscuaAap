@@ -25,7 +25,7 @@ export function register({ navigation, navigation: { goBack } }){
     const [enteredPassword, setEnteredPassword] = useState('');
     const [checked, setChecked] = useState(false);
     
-    const url = "https://miscua.com/terminos-y-condiciones.html";
+    const url = "https://miscua.com/terminos-y-condiciones";
 
     const terms = useCallback(async () => {
             await Linking.openURL(url);
@@ -217,7 +217,7 @@ export function register({ navigation, navigation: { goBack } }){
                                 <Text style={styles.registerTextWithout}>Entre todos saldremos de esta situación</Text>
                             </View>
                             <TouchableOpacity>
-                                <Text style={styles.backLogin} onPress={()=> navigation.navigate('LoginMiscua')}>Regresar</Text>
+                                <Text style={styles.backLogin} onPress={()=> {goBack();}}>Regresar</Text>
                             </TouchableOpacity>
                         </View>
                     </ScrollView>

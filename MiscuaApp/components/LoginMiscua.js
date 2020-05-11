@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { AuthContext } from "../context";
 
 import {
     Text,
@@ -16,11 +16,11 @@ import {
 } from 'react-native';
 
 import { ScrollView } from 'react-native-gesture-handler';
-import axios from 'axios';
-import { AsyncStorage } from 'react-native';
+import  axios  from 'axios';
+import {AsyncStorage} from 'react-native';
 
-export function LoginMiscua({ navigation }) {
-
+export function LoginMiscua({ navigation }){
+    const { signIn } = React.useContext(AuthContext);
     const [enteredPhone, setEnteredPhone] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
 
@@ -31,34 +31,33 @@ export function LoginMiscua({ navigation }) {
     //Function for validate the input
     const confirmInputHandler = () => {
         const confirmedPhone = enteredPhone;
-        if (confirmedPhone === '' || confirmedPhone.length < 10 || confirmedPhone[0] !== '3') {
-            Alert.alert('Ups', 'Ingresa un número válido')
-        }
-        else {
-            const confirmedPassword = enteredPassword;
-            if (confirmedPassword.length === 0 || confirmedPassword.length < 8) {
-                Alert.alert('Ups!', 'Revisa tu contraseña')
+        if (confirmedPhone === '' || confirmedPhone.length < 10 || confirmedPhone[0] !== '3'){
+            Alert.alert('Ups','Ingresa un número válido')
             }
-            else {
-                const user = {
-                    phone: '',
-                    password: ''
-                }
-                user['password'] = confirmedPassword;
-                user['phone'] = confirmedPhone;
-                console.log('Successful', user)
-
-                const HOST = 'https://covid19.ieliot.com/'
-                var postData = {
-                    "username": user.phone,
-                    "password": user.password
-                };
-                let axiosConfig = {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                };
-                axios.post(`${HOST}` + 'rest/v1/login/', postData, axiosConfig)
+        else{
+            const confirmedPassword = enteredPassword;
+            if (confirmedPassword.length === 0 || confirmedPassword.length < 8){
+                Alert.alert('Ups!','Revisa tu contraseña')}
+                else{
+                    const user = {
+                        phone: '',
+                        password: ''
+                        }
+                    user['password'] = confirmedPassword;
+                    user['phone'] = confirmedPhone;
+                    console.log('Successful', user)
+                    
+                    const HOST = 'https://covid19.ieliot.com/' 
+                    var postData = {
+                        "username": user.phone,
+                        "password": user.password
+                    };
+                    let axiosConfig = {
+                        headers: {
+                            'Content-Type': 'application/json'
+                            }
+                    };
+                    axios.post( `${HOST}` + 'rest/v1/login/', postData, axiosConfig)
                     .then(function (response) {
                         if (response.status === 200) {
                             if (response.data['token'] !== undefined) {
@@ -71,107 +70,111 @@ export function LoginMiscua({ navigation }) {
                                         Alert.alert('Error almacenar datos');
                                     }
                                 }
+                                const _retrieveData = async () => {
+                                    try {
+                                        const value = await AsyncStorage.getItem('token');
+                                        if (value !== null) {
+                                            // Our data is fetched successfully
+                                            console.log('value', value)
+                                            tokenretrive = value;
+                                        }
+                                    } catch (error) {
+                                            // Our data is fetched successfully
+                                    }
+                                }
                                 _storeData();
-                                Alert.alert('Inicio de sesion exitoso');
+                                _retrieveData();
                                 setEnteredPhone('');
                                 setEnteredPassword('');
-                                navigation.reset({
-                                    index: 0,
-                                    routes: [{ name: 'howto' }],
-                                });
+                                signIn(tokenUser);
 
                             } else {
                                 Alert.alert('Usuario o Password incorrectos');
                                 setEnteredPhone('');
                                 setEnteredPassword('');
                             }
-                        }
+                        } 
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
+                }
             }
-        }
-    }
+        }         
     return (
-        <TouchableWithoutFeedback onPress={() => {
+        <TouchableWithoutFeedback onPress={()=>{
             Keyboard.dismiss();
         }}>
             <SafeAreaView style={styles.safe}>
-                <View style={styles.generalContainer}>
-                    <ScrollView>
-                        <View style={styles.headerContainer}>
-                            <View>
-                                <Image style={styles.logo} source={require('../assets/img/01.png')} />
+            <View style={styles.generalContainer}>
+            <ScrollView>
+                    <View style={styles.headerContainer}>
+                        <View>
+                            <Image style={styles.logo} source={require('../assets/img/01.png')}/>
+                        </View>
+                        <View style={styles.tittle}>
+                            <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
+                        </View>
+                    </View>
+                    <View style={styles.loginContainer}>
+                        <View style={styles.inputView}>
+                            <View style={styles.left}>
+                                <Image 
+                                style={styles.logoTel}
+                                source={require('../assets/img/phone-2058848.png')}
+                                />
                             </View>
-                            <View style={styles.tittle}>
-                                <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
+                            <View style={styles.right}>
+                                <TextInput
+                                    style={styles.inputText}
+                                    placeholder='Teléfono'
+                                    placeholderTextColor= 'rgb(162, 162, 162)'
+                                    maxLength={10}
+                                    keyboardType={'number-pad'}
+                                    autoCapitalize="none"
+                                    blurOnSubmit
+                                    onChangeText={numberInputHandler}
+                                    value={enteredPhone}
+                                    
+                                />
                             </View>
                         </View>
-                        <View style={styles.loginContainer}>
-                            <View style={styles.inputView}>
-                                <View style={styles.left}>
-                                    <Image
-                                        style={styles.logoTel}
-                                        source={require('../assets/img/phone-2058848.png')}
-                                    />
-                                </View>
-                                <View style={styles.right}>
-                                    <TextInput
-                                        style={styles.inputText}
-                                        placeholder='Teléfono'
-                                        placeholderTextColor='rgb(162, 162, 162)'
-                                        maxLength={10}
-                                        keyboardType={'number-pad'}
-                                        autoCapitalize="none"
-                                        blurOnSubmit
-                                        onChangeText={numberInputHandler}
-                                        value={enteredPhone}
-
-                                    />
-                                </View>
+                        <View style={styles.inputView}>
+                            <View style={styles.left}>
+                                <Image 
+                                style={styles.logoTel}
+                                source={require('../assets/img/icon-lock-32.png')}
+                                />
                             </View>
-                            <View style={styles.inputView}>
-                                <View style={styles.left}>
-                                    <Image
-                                        style={styles.logoTel}
-                                        source={require('../assets/img/icon-lock-32.png')}
-                                    />
-                                </View>
-                                <View style={styles.right}>
-                                    <TextInput
-                                        style={styles.inputText}
-                                        placeholder='Contraseña'
-                                        maxLength={25}
-                                        placeholderTextColor='rgb(162, 162, 162)'
-                                        secureTextEntry={true}
-                                        onChangeText={setEnteredPassword}
-                                        value={enteredPassword}
-                                    />
-                                </View>
-                            </View>
-                            <TouchableOpacity style={styles.loginBtn} onPress={(confirmInputHandler)}>
-                                <Text style={styles.loginText} >
-                                    INGRESA</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => navigation.navigate('passwordRequest')}>
-                                <Text style={styles.forgot}>Olvidé mi contraseña</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.registerText} onPress={() =>
-                                navigation.reset({
-                                    index: 0,
-                                    routes: [{ name: 'register' }],
-                                })}>
-                                <Text><Text style={styles.registerTextWithout}>No tengo cuenta,  </Text><Text style={styles.registerLink}>REGISTRARME</Text></Text>
-                            </TouchableOpacity>
+                            <View style={styles.right}>
+                                <TextInput
+                                    style={styles.inputText}
+                                    placeholder='Contraseña'
+                                    maxLength={25}
+                                    placeholderTextColor= 'rgb(162, 162, 162)'
+                                    secureTextEntry= {true}
+                                    onChangeText={setEnteredPassword}
+                                    value={enteredPassword}
+                                />
+                            </View> 
                         </View>
+                        <TouchableOpacity  style={styles.loginBtn} onPress={(confirmInputHandler)}>
+                            <Text style={styles.loginText} >
+                                INGRESA</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('passwordRequest')}>
+                            <Text style={styles.forgot}>Olvidé mi contraseña</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.registerText} onPress={() => navigation.navigate('register')}>
+                            <Text><Text style={styles.registerTextWithout}>No tengo cuenta,  </Text><Text style={styles.registerLink}>REGISTRARME</Text></Text>
+                        </TouchableOpacity>
+                    </View>
                     </ScrollView>
-                </View>
-
-            </SafeAreaView>
+            </View>
+            
+        </SafeAreaView> 
         </TouchableWithoutFeedback>
-    )
-};
+        )};
 
 
 const styles = StyleSheet.create({
@@ -180,19 +183,19 @@ const styles = StyleSheet.create({
     },
     generalContainer: {
         backgroundColor: 'rgb(45, 45, 68)',
-        width: '100%',
-        height: '100%',
+        width:'100%',
+        height:'100%',
     },
     headerContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'center', 
+        alignItems: 'center', 
         marginTop: 20,
         backgroundColor: 'rgb(45, 45, 68)',
         marginBottom: 0,
     },
     logo: {
-        width: 260,
-        height: 160,
+        width: 260, 
+        height: 160, 
         marginTop: Platform.select({
             ios: 50,
             android: 30
@@ -227,77 +230,77 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-Medium',
         backgroundColor: 'rgb(45, 45, 68)',
         marginTop: Platform.select({
-            ios: 50,
-            android: 60
-        })
+          ios: 50,
+          android: 60
+      })
     },
-    inputView: {
+    inputView:{
         flexDirection: 'row',
-        width: "80%",
-        height: 30,
+        width:"80%",
+        height:30,
         borderBottomColor: 'rgb(162, 162, 162)',
         borderBottomWidth: 1,
-        marginBottom: 20,
-        paddingLeft: 15,
+        marginBottom:20,
+        paddingLeft:15,
         alignItems: 'center',
-        marginLeft: 9,
-        marginBottom: 10,
-    },
-    inputText: {
-        height: 70,
-        width: 300,
-        color: "white",
+        marginLeft:9,
+        marginBottom:10,
+      },
+      inputText:{
+        height:70,
+        width:300,
+        color:"white",
         justifyContent: 'center',
-    },
+      },
 
-    logoTel: {
-        width: 30,
-        height: 20,
+      logoTel: {
+        width: 30, 
+        height: 20,  
         padding: 0,
         paddingBottom: 0,
         resizeMode: 'contain',
-        justifyContent: 'center',
-    },
-    right: {
+        justifyContent:'center',
+      },
+      right: {
         paddingLeft: 10,
-        justifyContent: 'center',
-        marginTop: 30,
-    },
-    left: {
-        justifyContent: 'center',
-    },
-    forgot: {
+        justifyContent:'center',
+        marginTop:30,
+      },
+      left: {
+        justifyContent:'center',
+      },
+      forgot:{
         color: 'rgb(162, 162, 162)',
-        fontSize: 14,
+        fontSize:14,
         borderBottomColor: 'rgb(162, 162, 162)',
         borderBottomWidth: 1,
-        paddingBottom: 5,
+        paddingBottom:5,
         marginTop: 15,
         width: '80%'
-    },
+      },
 
-    loginBtn: {
-        width: "80%",
+      loginBtn:{
+        width:"80%",
         backgroundColor: 'rgb(90, 204, 193)',
         borderRadius: 5,
-        height: 50,
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: 40,
-        marginBottom: 10
-    },
-    loginText: {
+        height:50,
+        alignItems:"center",
+        justifyContent:"center",
+        marginTop:40,
+        marginBottom:10
+      },
+      loginText: {
         color: 'white'
-    },
-    registerText: {
-        paddingTop: 15,
-        fontSize: 13
-    },
-    registerTextWithout: {
+      },
+      registerText: {
+          paddingTop: 15,
+          fontSize: 13
+      },
+      registerTextWithout: {
         color: 'rgb(162, 162, 162)'
     },
     registerLink: {
         color: 'white'
     }
-},
+  },
 );
