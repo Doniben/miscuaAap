@@ -12,15 +12,13 @@ import {
 } from 'react-native';
 // import { withTheme } from 'react-native-elements';
 
-export function gpsRequest({ navigation, navigation: { goBack } }){
+export function gpsRequest({ navigation }){
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.gpsGeneralContainer}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => goBack()}>
-                        <Image style={styles.leftNavigator}
-                            source={require('../assets/img/back-50.png')}
-                        />  
+                    <TouchableOpacity>
+ 
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
                         <Image style={styles.rightInfo}
@@ -53,14 +51,6 @@ export function gpsRequest({ navigation, navigation: { goBack } }){
                         </LinearGradient>
                     </TouchableOpacity>
                     
-                </View>
-                <View style={styles.footerView}>
-                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
-                        <Image
-                        style={styles.logoCreators}
-                        source={require('../assets/img/logo.png')}
-                        />
-                    </TouchableOpacity>
                 </View>
             </View>
         </SafeAreaView>
