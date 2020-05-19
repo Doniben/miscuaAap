@@ -121,11 +121,7 @@ export function symptoms ({ navigation }){
         <SafeAreaView style={styles.safe}>
             <View style={styles.generalContainer}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
-                        <Image style={styles.leftNavigation} source={require('../assets/img/back-50.png')}/>  
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{navigation.navigate('creators')}} >
-                        <Image style={styles.creatorsimg} source={require('../assets/img/logo.png')}/>
+                    <TouchableOpacity>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
                         <Image style={styles.rightInfo} source={require('../assets/img/info.png')}/>  
