@@ -12,20 +12,17 @@ import {
     SafeAreaView
 } from 'react-native';
 
-export function creators({ navigation }){
+export function creators({ navigation, navigation: { goBack } } ){
     return (
             <View style={styles.howToContainer}>
                 <ScrollView>
                     <View style={styles.header}>
-                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                        <TouchableOpacity onPress={() => goBack()}>
                             <Image style={styles.leftNavigation}
                                 source={require('../assets/img/back-50.png')}
                             />  
                         </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Image style={styles.rightInfo}
-                                source={require('../assets/img/info.png')}
-                            />  
+                        <TouchableOpacity> 
                         </TouchableOpacity>
                     </View>
                     <View style={styles.headerContainer}>
