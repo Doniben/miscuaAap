@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import Unorderedlist from 'react-native-unordered-list';
 
 import {
     Text,
@@ -15,94 +14,144 @@ import {
 
 export function creators({ navigation }){
     return (
-        <ScrollView>
             <View style={styles.howToContainer}>
-                <View style={styles.header}>
-                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
-                        <Image style={styles.leftNavigation}
-                            source={require('../assets/img/back-50.png')}
-                        />  
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Image style={styles.rightInfo}
-                            source={require('../assets/img/info.png')}
-                        />  
-                    </TouchableOpacity>
-                </View>
-                <View>
+                <ScrollView>
+                    <View style={styles.header}>
+                        <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                            <Image style={styles.leftNavigation}
+                                source={require('../assets/img/back-50.png')}
+                            />  
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Image style={styles.rightInfo}
+                                source={require('../assets/img/info.png')}
+                            />  
+                        </TouchableOpacity>
+                    </View>
                     <View style={styles.headerContainer}>
                         <Image
                             style={styles.logo}
-                            source={require('../assets/img/01.png')}/>
-                    </View>
-                </View>
-                <View>
-                    <Text style={styles.textVideo}>
-                            Ésta app nace del sentimiento de solidaridad, empatía y trabajo en 
-                        equipo de nosotros los colombianos. Quisimos aportar con nuestros 
-                        conocimientos y soluciones tecnológicas y así mitigar el impacto del 
-                        COVID-19 en nuestro país. Agradecemos a todos los que ayudaron e 
-                        hicieron parte de este noble proyecto.
-                    </Text>
-                </View>
-                <View style={styles.tittle}>
-                    <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
-                </View>
-                <View style={{ flexDirection: 'row', alignSelf:'center' }}>
-                    <View>
-                        <Image
-                            style={styles.imageVideo}
-                            source={require('../assets/img/conicomlab.png')}
-                        />
-                        <Text style={styles.descripcion}>
-                            conicomlab.com
-                        </Text>
+                            source={require('../assets/img/02.png')}/>
                     </View>
                     <View>
-                        <Image
-                            style={styles.imageVideo}
-                            source={require('../assets/img/thedataculture.png')}
-                        />
-                        <Text style={styles.descripcion}>
-                            thedataculture.com
+                        <Text style={styles.textVideo}>Ésta app nace del sentimiento de solidaridad, 
+                                                    empatía y trabajo en equipo de nosotros los colombianos. 
+                                                    Quisimos aportar con nuestros conocimientos y soluciones 
+                                                    tecnológicas y así mitigar el impacto del COVID-19 en nuestro 
+                                                    país. Agradecemos a todos los que ayudaron e hicieron 
+                                                    parte de este noble proyecto.
                         </Text>
                     </View>
-                </View>
-                <View style={{ flexDirection: 'row', alignSelf:'center', marginBottom:20 }}>
+                    <View style={styles.tittle}>
+                        <Text><Text style={styles.sectionTitle}>COLOMBIA </Text><Text style={styles.sectionBoldTitle}>UNIDA</Text></Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignSelf:'center' }}>
+                        <View>
+                            <Image
+                                style={styles.imageVideo}
+                                source={require('../assets/img/conicomlab.png')}
+                            />
+                            <Text style={styles.descripcion}>
+                                conicomlab.com
+                            </Text>
+                        </View>
+                        <View>
+                            <Image
+                                style={styles.imageVideo}
+                                source={require('../assets/img/thedataculture.png')}
+                            />
+                            <Text style={styles.descripcion}>
+                                thedataculture.com
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignSelf:'center', marginBottom:20 }}>
+                        <View>
+                            <Image
+                                style={styles.imageVideo}
+                                source={require('../assets/img/siglo.png')}
+                            />
+                            <Text style={styles.descripcion}>
+                                siglo.tech
+                            </Text>
+                        </View>
+                        <View>
+                            <Image
+                                style={styles.imageVideo}
+                                source={require('../assets/img/dochjaFilmo.png')}
+                            />
+                            <Text style={styles.descripcion}>
+                                doniben.tech
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignSelf:'center', marginBottom:20 }}>
+                        <View>
+                            <Image
+                                style={styles.imageVideo}
+                                source={require('../assets/img/b4bcompany.png')}
+                            />
+                            <Text style={styles.descripcion}>
+                                ********
+                            </Text>
+                        </View>
+                        <View>
+                                <Image
+                                    style={styles.imageVideo}
+                                    source={require('../assets/img/prisma.png')}
+                                />
+                                <Text style={styles.descripcion}>
+                                    *********
+                                </Text>
+                        </View>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignSelf:'center', marginBottom:20 }}>
+                        <View>
+                                <Image
+                                    style={styles.imageVideo}
+                                    source={require('../assets/img/idmarketing.png')}
+                                />
+                                <Text style={styles.descripcion}>
+                                    *********
+                                </Text>
+                            </View>
+                        <View>
+                            <Image
+                                style={styles.imageVideo}
+                                source={require('../assets/img/comprim.png')}
+                            />
+                            <Text style={styles.descripcion}>
+                                ********
+                            </Text>
+                        </View>
+                    </View>
                     <View>
-                        <Image
-                            style={styles.imageVideo}
-                            source={require('../assets/img/pluriza.png')}
-                        />
-                        <Text style={styles.descripcion}>
-                            pluriza.com
-                        </Text>
-                    </View>
-                    <View>
-                        <Image
-                            style={styles.imageVideo}
-                            source={require('../assets/img/dochjaFilmo.png')}
-                        />
-                        <Text style={styles.descripcion}>
-                            doniben.tech
-                        </Text>
-                    </View>
-                </View>
-                <View>
-                    <Text style={styles.sectionBoldTitle}>
+                        <Text style={styles.sectionBoldTitle}>
                             EQUIPO
-                    </Text>
-                </View>
-                <View style={styles.contributors}>
-                    <Text style={styles.textVideo}>
-                        * Jhon Sebastian Arevalo Ballesteros
-                        * Leito
-                        * Doniben Jimenez
-                        * David Arbeláez Guzman
-                    </Text>
-                </View>
+                        </Text>
+                    </View>
+                    <View style={styles.contributors}>
+                        <Unorderedlist bulletUnicode={0x2800}>
+                            <Unorderedlist><Text>Daicy C. Echeverri C</Text></Unorderedlist>
+                            <Unorderedlist><Text>Daniel Alejandro Ramirez</Text></Unorderedlist>
+                            <Unorderedlist><Text>David Arbeláez Guzman</Text></Unorderedlist>
+                            <Unorderedlist><Text>Doniben Jimenez</Text></Unorderedlist>
+                            <Unorderedlist><Text>Ivan Andres Diaz</Text></Unorderedlist>
+                            <Unorderedlist><Text>Jhon Sebastian Arevalo Ballesteros</Text></Unorderedlist>
+                            <Unorderedlist><Text>John H. Rodríguez</Text></Unorderedlist>
+                            <Unorderedlist><Text>Juan</Text></Unorderedlist>
+                            <Unorderedlist><Text>Juan Sebastian Calle</Text></Unorderedlist>
+                            <Unorderedlist><Text>Leonardo Galeano</Text></Unorderedlist>
+                            <Unorderedlist><Text>Luis Guillermo Aguirre Abad</Text></Unorderedlist>
+                            <Unorderedlist><Text>Natalia Medina</Text></Unorderedlist>
+                            <Unorderedlist><Text>Natali Ramírez García</Text></Unorderedlist>
+                            <Unorderedlist><Text>Oscar muñoz</Text></Unorderedlist>       
+                            <Unorderedlist><Text>Steven Serje</Text></Unorderedlist>
+                            <Unorderedlist><Text>Yesid Gutierrez</Text></Unorderedlist>
+                        </Unorderedlist>
+                    </View>
+                </ScrollView>
             </View>
-        </ScrollView>
     )}
 
 const styles = StyleSheet.create({
@@ -116,13 +165,13 @@ const styles = StyleSheet.create({
             android: 15
         }),
         backgroundColor: 'white',
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
 
     header: {
         flexDirection: 'row',
         width: '100%',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     leftNavigation: {
         width: 10,
@@ -141,13 +190,16 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: 'rgb(45, 45, 68)',
         textAlign: 'center',
-        marginTop: 40,
         width: '80%',
-        alignSelf: 'center'
+        alignSelf:'center',
+        textAlign:Platform.select({
+            ios: 'justify',
+            android:'center',
+        }),
     },
     imageVideo: {
         resizeMode: "contain",
-        width: 150,
+        width: 160,
         alignSelf: 'center',
         height: 100,
         marginTop: 20
@@ -176,15 +228,11 @@ const styles = StyleSheet.create({
 
     },
 
-
-
     headerContainer: {
         justifyContent: 'center', 
         alignItems: 'center', 
-        width: '100%', 
-        height: 150,
-        marginTop: 20,
-        backgroundColor: 'white'
+        width: '100%',
+        marginBottom:20,
     },
 
     tittle: {
@@ -209,21 +257,17 @@ const styles = StyleSheet.create({
         color: 'rgb(45, 45, 68)',
         paddingTop: 10,
         textAlign: 'center',
+        marginBottom:10,
     },
     
     logo: {
         width: 260, 
-        height: 160, 
-        marginTop: Platform.select({
-            ios: 80,
-            android: 20
-        }),
-        padding: 10,
-        paddingBottom: 0,
-        resizeMode: 'contain'
+        height: 80, 
+        resizeMode: 'contain',
     },
     contributors: {
     width: '80%',
     alignSelf:'center', 
+    marginBottom:15,
     }
 })
