@@ -25,23 +25,14 @@ export function analyzingContagion({ navigation }){
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.Container}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
-                        <Image style={styles.leftNavigation}
-                            source={require('../assets/img/back-50.png')}
-                        />  
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
-                        <Image style={styles.rightInfo}
-                            source={require('../assets/img/info.png')}
-                            onLoad={next()}
-                        />  
-                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.leftNavigation}></TouchableOpacity>
                 </View>
             {/* <View style={styles.analyzingContainer}> */}
                 <View style={styles.analysingImage}>
                     <Image 
                         style={styles.riesgo}
-                        source={require('../assets/img/virusFemale.png')}/>
+                        source={require('../assets/img/virusFemale.png')}
+                        onLoad={next()}/>
                     <Text style={styles.riesgoText}>
                         RIESGO DE CONTAGIO
                     </Text>
