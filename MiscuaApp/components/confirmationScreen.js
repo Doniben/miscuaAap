@@ -62,15 +62,6 @@ export function confirmationScreen({ navigation, navigation: { goBack } }) {
                     </View>
                 </View>
                 <View style={styles.footerView}>
-                    <TouchableOpacity onPress={async () => {
-                        navigation.navigate('creators')
-                    }
-                    }>
-                        <Image
-                            style={styles.creatorsButton}
-                            source={require('../assets/img/logo.png')}
-                        />
-                    </TouchableOpacity>
                 </View>
             </View>
         </SafeAreaView>

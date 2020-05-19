@@ -12,20 +12,14 @@ import {
 } from 'react-native';
 // import { withTheme } from 'react-native-elements';
 
-export function gpsRequest({ navigation, navigation: { goBack } }){
+export function gpsRequest({ navigation }){
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.gpsGeneralContainer}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => goBack()}>
-                        <Image style={styles.leftNavigator}
-                            source={require('../assets/img/back-50.png')}
-                        />  
+                    <TouchableOpacity>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
-                        <Image style={styles.rightInfo}
-                            source={require('../assets/img/info.png')}
-                        />  
+                    <TouchableOpacity style={styles.rightInfo}>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.gpsContainer}>
@@ -47,20 +41,15 @@ export function gpsRequest({ navigation, navigation: { goBack } }){
                             ZONAS SEGURAS PARA TODOS {'\n'}
                             LOS COLOMBIANOS  
                     </Text>
-                    <TouchableOpacity style={styles.loginBtn} onPress={() => { navigation.navigate('map') }}>
+                    <TouchableOpacity style={styles.loginBtn} onPress={() => { navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'map' }],
+                            });}}>
                         <LinearGradient style={styles.loginBtn}  colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}>
                             <Text style={styles.loginText}>ACEPTO</Text>
                         </LinearGradient>
                     </TouchableOpacity>
                     
-                </View>
-                <View style={styles.footerView}>
-                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
-                        <Image
-                        style={styles.logoCreators}
-                        source={require('../assets/img/logo.png')}
-                        />
-                    </TouchableOpacity>
                 </View>
             </View>
         </SafeAreaView>
@@ -149,6 +138,7 @@ const styles = StyleSheet.create({
         height: 30,
         marginRight: 30,
         marginTop: 30,
+        marginBottom:10,
     },
 
     footerView: {

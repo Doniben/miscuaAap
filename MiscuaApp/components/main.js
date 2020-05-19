@@ -175,7 +175,8 @@ const styles = StyleSheet.create({
         width: '50%',
         height: '54%',
         borderRadius: 20,
-        marginVertical: 10
+        marginVertical: 10,
+        resizeMode: "contain",
     },
     riesgoText: {
         fontSize: 16,

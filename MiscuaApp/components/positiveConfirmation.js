@@ -65,12 +65,6 @@ export function positiveConfirmation({ navigation, navigation: { goBack } }){
                     </View>
                 </View>
                 <View style={styles.footerView}>
-                    <TouchableOpacity onPress={() => navigation.navigate('creators')}>
-                        <Image
-                        style={styles.creatorsButton}
-                        source={require('../assets/img/logo.png')}
-                        />
-                    </TouchableOpacity>
                 </View>
             </View>
         </SafeAreaView>
