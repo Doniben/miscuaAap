@@ -18,12 +18,8 @@ export function gpsRequest({ navigation }){
             <View style={styles.gpsGeneralContainer}>
                 <View style={styles.header}>
                     <TouchableOpacity>
- 
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('atentionLines')}>
-                        <Image style={styles.rightInfo}
-                            source={require('../assets/img/info.png')}
-                        />  
+                    <TouchableOpacity style={styles.rightInfo}>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.gpsContainer}>
@@ -45,7 +41,10 @@ export function gpsRequest({ navigation }){
                             ZONAS SEGURAS PARA TODOS {'\n'}
                             LOS COLOMBIANOS  
                     </Text>
-                    <TouchableOpacity style={styles.loginBtn} onPress={() => { navigation.navigate('map') }}>
+                    <TouchableOpacity style={styles.loginBtn} onPress={() => { navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'map' }],
+                            });}}>
                         <LinearGradient style={styles.loginBtn}  colors={['rgb(90, 204, 193)',  'rgb(11, 191, 214)']}>
                             <Text style={styles.loginText}>ACEPTO</Text>
                         </LinearGradient>
@@ -139,6 +138,7 @@ const styles = StyleSheet.create({
         height: 30,
         marginRight: 30,
         marginTop: 30,
+        marginBottom:10,
     },
 
     footerView: {
