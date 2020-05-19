@@ -21,10 +21,10 @@ export function atentionLines({ navigation, navigation: { goBack } }){
                                 source={require('../assets/img/back-50.png')}
                             />  
                         </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Image style={styles.rightInfo}
-                                source={require('../assets/img/info.png')}
-                            />  
+                        <TouchableOpacity onPress={()=> navigation.navigate('creators')}>
+                            <Image style={styles.rightInfo} 
+                                    source={require('../assets/img/logo.png')}
+                                />  
                         </TouchableOpacity>
                     </View>
                     <View style={styles.confirmationContainer}>
@@ -129,14 +129,6 @@ export function atentionLines({ navigation, navigation: { goBack } }){
                             />
                         </View>
                     </View>
-                    <View style={styles.footerView}>
-                        <TouchableOpacity>
-                            <Image
-                            style={styles.creatorsButton}
-                            source={require('../assets/img/logo.png')}
-                            />
-                        </TouchableOpacity>
-                    </View>
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -169,6 +161,7 @@ const styles = StyleSheet.create({
         height: 30,
         marginRight: 30,
         marginTop: 30,
+        resizeMode:'contain',
     },
     confirmationContainer: {
         flex: 1,
@@ -181,7 +174,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 24,
         fontWeight: 'bold',
-        marginTop: 50,
+        marginTop: 20,
         borderBottomColor: 'rgb(51, 225, 237)',
         borderBottomWidth: 3
 
